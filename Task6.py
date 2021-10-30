@@ -6,14 +6,16 @@ Get data from the user in the console using argument-less input()."""
 
 import abc
 
-
-a = int(input(""))
-b = int(input(""))
-c = a
-if a >= b:
-    print("Job finished")
-elif a < b:
-    while a < b:
-        a = a+1
-        c= c+a
-    print(c)
+try:
+    a = int(input(""))
+    b = int(input(""))
+    c = a
+    if a >= b:
+        print("Job finished")
+    elif a < b:
+        while a < b:
+            a = a+1
+            c= c+a
+        print(c)
+except:
+    print("Please enter numbers.")
