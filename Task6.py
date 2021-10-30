@@ -7,10 +7,10 @@ Get data from the user in the console using argument-less input()."""
 import abc
 
 
-a = int(input("Number1"))
-b = int(input("Number2"))
+a = int(input(""))
+b = int(input(""))
 c = a
-if a > b:
+if a >= b:
     print("Job finished")
 elif a < b:
     while a < b:
