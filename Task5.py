@@ -6,7 +6,9 @@ Get data from the user in the console using argument-less input()."""
 
 # Code
 try:
-
-
+    number = int(input())
+    for i in range(0, number+1):
+        if i % 2 != 0:
+            print(i)
 except:
-    print("Hey")
+    print("Please enter a positive number")
