@@ -13,3 +13,32 @@ and then calculate the installment amount based on the number of installments.
 
 Get data from the user in the console using argument-less input()."""
 
+try:
+    loan_amount = float(input())
+    number_of_installments = int(input())
+# Loan amount
+    if loan_amount < 100.00:
+        loan_amount = 5000.00
+    if loan_amount > 10000.00:
+        loan_amount = 5000.00
+
+# Installments
+    if number_of_installments < 6:
+        number_of_installments = 36
+    if number_of_installments > 48:
+        number_of_installments = 36
+    
+# Code to calculate %
+    if number_of_installments < 13:
+        loan_amount = loan_amount + (loan_amount / 100 * 2.5)
+    elif number_of_installments >= 13 and number_of_installments < 25:
+        loan_amount = loan_amount + (loan_amount / 100 * 5)
+    else:
+        loan_amount = loan_amount + (loan_amount / 100 * 10)
+# Calculating installments 
+    installments = loan_amount / number_of_installments
+    print(installments)
+except:
+    print("Incorrect values entered!")
+
+    
