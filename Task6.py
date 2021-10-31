@@ -18,4 +18,4 @@ try:
             c= c+a
         print(c)
 except:
-    print("Please enter numbers.")
+    print("Please enter only numbers.")
