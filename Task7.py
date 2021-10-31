@@ -3,6 +3,7 @@
 For example, for the number 71 the program should write in the console the numbers: 1 2 4 8 16 32 64.
 
 Get data from the user in the console using argument-less input()."""
+# Code
 try:
     n = int(input())
     i = 1
