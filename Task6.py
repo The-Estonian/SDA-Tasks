@@ -7,8 +7,8 @@ Get data from the user in the console using argument-less input()."""
 import abc
 
 try:
-    a = int(input(""))
-    b = int(input(""))
+    a = int(input())
+    b = int(input())
     c = a
     if a >= b:
         print("Job finished")
