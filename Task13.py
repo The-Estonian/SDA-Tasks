@@ -18,31 +18,36 @@ I found Python
 Ends with Python
 54
 Download data from the user in the console using argument-less input()."""
-try:
-    sentence = str(input("Enter a sentence: "))
-    word = "Python"
-    # checks if the word "Python" appears in the text - if so, it prints the message "I found Python" in the console
+while True:
+    try:
+        sentence = str(input("Enter a sentence: "))
+        word = "Python"
+        # checks if the word "Python" appears in the text - if so, it prints the message "I found Python" in the console
+        if sentence == "X":
+            break
 
-    if word in sentence:
-        print("I found Python")
+        if word in sentence:
+            print("I found Python")
 
-    # checks if the text starts with the word "Python" - if so, it prints the message "Starts with Python" in the console
+        # checks if the text starts with the word "Python" - if so, it prints the message "Starts with Python" in the console
 
-    if sentence.split()[0] == "Python":
-        print("Starts with Python")
+        if sentence.split()[0] == "Python":
+            print("Starts with Python")
 
-    # check if the text ends with the word "Python" - if so, it prints the message "Ends with Python" in the console
+        # check if the text ends with the word "Python" - if so, it prints the message "Ends with Python" in the console
 
-    if sentence.split()[-1] == "Python":
-        print("Ends with Python")
+        if sentence.split()[-1] == "Python":
+            print("Ends with Python")
 
-    # checks if the text equals the word "Python" - if so, prints the message "Equals Python" in the console
+        # checks if the text equals the word "Python" - if so, prints the message "Equals Python" in the console
 
-    if sentence == "Python":
-        print("Equals Python")
+        if sentence == "Python":
+            print("Equals Python")
 
-    # Prints the index of the first occurrence of the word "Python" in the text in the console.
+        # Prints the index of the first occurrence of the word "Python" in the text in the console.
 
-    print(sentence.index("Python"))
-except:
-    print("Please enter a valid sentence!")
+        print(sentence.index("Python"))
+    except:
+        print("Please enter a valid sentence having Python in it!")
+        print("To quit enter X")
+        continue
