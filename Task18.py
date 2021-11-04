@@ -12,49 +12,52 @@ while True:
     sentence_back = ""
     reconstruct = []
     reconstruct_key = []
-    dissiminate = []
-    #sentence = str(input())
-    sentence = "this is a sentence"
-    n = 13
+    disseminate = []
+    sentence, n = str(input("Please enter a sentence to cyper: ")), int(input("Please enter a number for cypher complexity: "))
+    #sentence = "alice has a cat"
     alphabet = {
-                1:"a", 
-                2:"b", 
-                3:"c", 
-                4:"d", 
-                5:"e", 
-                6:"f", 
-                7:"g", 
-                8:"h",
-                9:"i", 
-                10:"j", 
-                11:"k", 
-                12:"l", 
-                13:"m", 
-                14:"n", 
-                15:"o",
-                16:"p", 
-                17:"q", 
-                18:"r", 
-                19:"s", 
-                20:"t", 
-                21:"u", 
-                22:"v", 
-                23:"w", 
-                24:"x", 
-                25:"y", 
-                26:"z",
-                27:" "}
-# Iterating over each letter in sentence and applying letter key value to dissiminate list.
+                0:"a", 
+                1:"b", 
+                2:"c", 
+                3:"d", 
+                4:"e", 
+                5:"f", 
+                6:"g", 
+                7:"h",
+                8:"i", 
+                9:"j", 
+                10:"k", 
+                11:"l", 
+                12:"m", 
+                13:"n", 
+                14:"o",
+                15:"p", 
+                16:"q", 
+                17:"r", 
+                18:"s", 
+                19:"t", 
+                20:"u", 
+                21:"v", 
+                22:"w", 
+                23:"x", 
+                24:"y", 
+                25:"z",
+                100:" "}
+# Iterating over each letter in sentence and applying letter key value to disseminate list.
     for _ in sentence:
         for key, value in alphabet.items():
             if value == _:
-                dissiminate.append(key)
-# Iterating over each key value in dissiminate list and applying "n" times value to key. Also ignoring "space" key value in process.
-    for _ in dissiminate:
-        if _ == 27:
+                disseminate.append(key)
+# Iterating over each key value in disseminate list and applying "n" times value to key. Also ignoring "space" key value in process.
+    for _ in disseminate:
+        if _ == 100:
             reconstruct_key.append(_)
         else:
-            reconstruct_key.append(_+n)
+            if _+n > 25:
+                reconstruct_key.append(_-26+n)
+            else:
+                reconstruct_key.append(_+n)
+            
 # Iterating over alphabet dictionary with new key values to find new letters and appending them into reconstruct list.
     for _ in reconstruct_key:
         for key, value in alphabet.items():
