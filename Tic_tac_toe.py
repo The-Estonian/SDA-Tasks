@@ -4,49 +4,104 @@ import tkinter as tk
 box_width = 25
 box_height = 10
 screen = str(box_width * 22) + "x" + str(box_height * 48)
-
-
+num_count = 0
+o_box = [1, 3, 5, 7]
+x_box = [0, 2, 4, 6, 8]
 def choice_1():
-    if box_1 == "Click Me!":
+    global num_count
+    if num_count in o_box:
         box_1.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_1.set("X")
+        num_count += 1
 
 def choice_2():
-    box_2.set("O")
+    global num_count
+    if num_count in o_box:
+        box_2.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_2.set("X")
+        num_count += 1
 
 def choice_3():
-    box_3.set("O")
+    global num_count
+    if num_count in o_box:
+        box_3.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_3.set("X")
+        num_count += 1
 
 def choice_4():
-    box_4.set("O")
+    global num_count
+    if num_count in o_box:
+        box_4.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_4.set("X")
+        num_count += 1
 
 def choice_5():
-    box_5.set("O")
+    global num_count
+    if num_count in o_box:
+        box_5.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_5.set("X")
+        num_count += 1
 
 def choice_6():
-    box_6.set("O")
+    global num_count
+    if num_count in o_box:
+        box_6.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_6.set("X")
+        num_count += 1
 
 def choice_7():
-    box_7.set("O")
+    global num_count
+    if num_count in o_box:
+        box_7.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_7.set("X")
+        num_count += 1
 
 def choice_8():
-    box_8.set("O")
+    global num_count
+    if num_count in o_box:
+        box_8.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_8.set("X")
+        num_count += 1
+
 
 def choice_9():
-    box_9.set("O")
+    global num_count
+    if num_count in o_box:
+        box_9.set("O")
+        num_count += 1
+    elif num_count in x_box:
+        box_9.set("X")
+        num_count += 1
 
 
 root = Tk()
 root.title("Tic-Tac-Toe")
 root.resizable(0,0)
-box_1 = tk.StringVar(value = "Click Me!")
-box_2 = tk.StringVar(value = "Click Me!")
-box_3 = tk.StringVar(value = "Click Me!")
-box_4 = tk.StringVar(value = "Click Me!")
-box_5 = tk.StringVar(value = "Click Me!")
-box_6 = tk.StringVar(value = "Click Me!")
-box_7 = tk.StringVar(value = "Click Me!")
-box_8 = tk.StringVar(value = "Click Me!")
-box_9 = tk.StringVar(value = "Click Me!")
+box_1 = tk.StringVar(value = " ")
+box_2 = tk.StringVar(value = " ")
+box_3 = tk.StringVar(value = " ")
+box_4 = tk.StringVar(value = " ")
+box_5 = tk.StringVar(value = " ")
+box_6 = tk.StringVar(value = " ")
+box_7 = tk.StringVar(value = " ")
+box_8 = tk.StringVar(value = " ")
+box_9 = tk.StringVar(value = " ")
 
 
 btn_top_left = tk.Button(root, textvariable = box_1, width = box_width, height = box_height, fg = "red", bg = "white", command = choice_1)
@@ -75,6 +130,7 @@ btn_bottom_middle.grid(row = 2, column = 1)
 
 btn_bottom_right = tk.Button(root, textvariable = box_9, width = box_width, height = box_height, fg = "red", bg = "white", command = choice_9)
 btn_bottom_right.grid(row = 2, column = 2)
+
 
 root.geometry(screen)
 root.mainloop()
