@@ -224,38 +224,50 @@ while True:
    a = "┌──────────┬──────────┬──────────┐"
    b = "│          │          │          │"
    c = "│          │          │          │"
-   d = "│          │          │          │"
+   d = "│     1    │    2     │    3     │"
    f = "│          │          │          │"
    g = "├──────────┼──────────┼──────────┤"
    h = "│          │          │          │"
    i = "│          │          │          │"
-   j = "│          │          │          │"
+   j = "│    4     │    5     │    6     │"
    k = "│          │          │          │"
    m = "├──────────┼──────────┼──────────┤"
    n = "│          │          │          │"
    p = "│          │          │          │"
-   q = "│          │          │          │"
+   q = "│    7     │    8     │    9     │"
    r = "│          │          │          │"
    s = "└──────────┴──────────┴──────────┘"
 
 
    print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
 
-   list_x = []
-   list_o = []
+   winning_condition = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
+                        [1, 4, 7], [2, 5, 8], [3, 6, 9],
+                        [1, 5, 9], [3, 5, 7]]
+   positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   player_x = []
+   player_o = []
 
-   while len(list_x) + len(list_o) <= 8:
-      answer_x = int(input("Player X please choose a box to occupy: "))
-      list_x.append(answer_x)
-      Box(answer_x, "X")
+   while len(positions) > 0:
 
+      if len(player_x) <= len(player_o):
+         answer = int(input("Player X please choose a box to occupy: "))
+         player_x.append(answer)
+         if answer in positions:
+            positions.remove(answer)
+            Box(answer, "X")
+         else:
+            print("Number already taken: ")
+
+      elif len(player_x) > len(player_o):
+         answer = int(input("Player O please choose a box to occupy: "))
+         player_o.append(answer)
+         if answer in positions:
+            positions.remove(answer)
+            Box(answer, "O")
+         else:
+            print("Number already taken: ")
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
 
-      answer_o = int(input("Player O please choose a box to occupy: "))
-      list_o.append(answer_o)
-      Box(answer_o, "O")
-
-      os.system("cls")
-      print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
    break
