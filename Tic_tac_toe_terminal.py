@@ -5,51 +5,6 @@ https://www.w3.org/TR/xml-entity-names/025.html
 
 symbols = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.', '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
 
-"""
-grid = """
-┌──────────┬──────────┬──────────┐
-│   ╲  ╱   │ ┌──────┐ │          │
-│    ╲╱    │ │      │ │          │
-│    ╱╲    │ │      │ │          │
-│   ╱  ╲   │ └──────┘ │          │
-├──────────┼──────────┼──────────┤
-│          │          │          │
-│          │          │          │
-│          │          │          │
-│          │          │          │
-├──────────┼──────────┼──────────┤
-│ ████████ │          │          │
-│ ████████ │          │          │
-│ ████████ │          │          │
-│ ████████ │          │          │
-└──────────┴──────────┴──────────┘
-
-⌛⏳
-
-   ⏤
-      
- ⎛   ⎞
- 
- ⎝   ⎠
-   ⏤
-
-╭──────╮
-│      │
-│      │
-╰──────╯ 
-
-   ╲  ╱
-    ╲╱
-    ╱╲
-   ╱  ╲
-"""
-# Game starts here!
-# Imports, "cls" in "os" module to increase readability in game by clearing terminal.
-import os
-from typing import _SpecialForm
-
-# Basic empty backup grid
-"""
 a = "┌──────────┬──────────┬──────────┐"
 b = "│          │          │          │"
 c = "│          │          │          │"
@@ -68,6 +23,11 @@ r = "│          │          │          │"
 s = "└──────────┴──────────┴──────────┘"
 """
 
+# Game starts here!
+# Imports, "cls" in "os" module to increase readability in game by clearing terminal.
+import os
+
+# Grid in while loop below
 # X value 8 spaces, 4 rows
 b1 = "  ╲  ╱  "
 b2 = "   ╲╱   "
@@ -237,8 +197,6 @@ class Box():
          q = q[:24] + b3[:8] + q[32:]
          r = r[:24] + b4[:8] + r[32:]
 
-      
-
 while True:
 
    os.system("cls")
@@ -281,26 +239,5 @@ while True:
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# for reference.
-
-# Box1 variable activator
-#      var1 = input("Box1: ")
-#      if var1 == "X":
-#         box_1("X")
-#      elif var1 == "O":
-#         box_1("O")
+   break
+# This is a new branch for rework
