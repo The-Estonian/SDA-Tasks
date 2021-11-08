@@ -179,6 +179,48 @@ def box_6(var_var6):
       j = j[:24] + b3[:8] + j[32:]
       k = k[:24] + b4[:8] + k[32:]
 
+# 7th box function to switch value to O or X
+def box_7(var_var7):
+   global n, p, q, r
+   if var_var7 == "O":
+      n = n[:2] + a1[0:8] + n[10:]
+      p = p[:2] + a2[0:8] + p[10:]
+      q = q[:2] + a3[0:8] + q[10:]
+      r = r[:2] + a4[0:8] + r[10:]
+   if var_var7 == "X":
+      n = n[:2] + b1[0:8] + n[10:]
+      p = p[:2] + b2[0:8] + p[10:]
+      q = q[:2] + b3[0:8] + q[10:]
+      r = r[:2] + b4[0:8] + r[10:]
+
+# 8th box function to switch value to O or X
+def box_8(var_var8):
+   global n, p, q, r
+   if var_var8 == "O":
+      n = n[:13] + a1[:8] + n[21:]
+      p = p[:13] + a2[:8] + p[21:]
+      q = q[:13] + a3[:8] + q[21:]
+      r = r[:13] + a4[:8] + r[21:]
+   if var_var8 == "X":
+      n = h[:13] + b1[:8] + n[21:]
+      p = i[:13] + b2[:8] + p[21:]
+      q = j[:13] + b3[:8] + q[21:]
+      r = k[:13] + b4[:8] + r[21:]
+
+# 9th box function to switch value to O or X
+def box_9(var_var9):
+   global n, p, q, r
+   if var_var9 == "O":
+      n = n[:24] + a1[:8] + n[32:]
+      p = p[:24] + a2[:8] + p[32:]
+      q = q[:24] + a3[:8] + q[32:]
+      r = r[:24] + a4[:8] + r[32:]
+   if var_var9 == "X":
+      n = n[:24] + b1[:8] + n[32:]
+      p = p[:24] + b2[:8] + p[32:]
+      q = q[:24] + b3[:8] + q[32:]
+      r = r[:24] + b4[:8] + r[32:]
+
       
 
 while True:
@@ -247,6 +289,28 @@ while True:
          box_6("X")
       elif var6 == ("O"):
          box_6("O")
+
+# Box7 variable activator
+      var7 = input("Box7: ")
+      if var7 == ("X"):
+         box_7("X")
+      elif var7 == ("O"):
+         box_7("O")
+
+# Box8 variable activator
+      var8 = input("Box8: ")
+      if var8 == ("X"):
+         box_8("X")
+      elif var8 == ("O"):
+         box_8("O")
+
+# Box9 variable activator
+      var9 = input("Box9: ")
+      if var9 == ("X"):
+         box_9("X")
+      elif var9 == ("O"):
+         box_9("O")
+
 
 
 
