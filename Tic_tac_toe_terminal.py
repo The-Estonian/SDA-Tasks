@@ -253,103 +253,115 @@ while True:
    player_o = []
 
 # Game loop
-   game_mode = input("1 or 2 players?: ")
-   os.system("cls")
-   print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-   if game_mode == "2":
-      while len(positions) > 0:
-      # X player picking
-         if len(player_x) <= len(player_o):
-            answer = int(input("Player X please choose a box to occupy: "))
-            if answer in positions:
-               positions.remove(answer)
-               player_x.append(answer)
-               Box(answer, "X")
-               os.system("cls")
-               print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-            else:
-               print("Number has already been taken: ")
+   try:
+      game_mode = input("1 or 2 players?: ")
+      os.system("cls")
+      print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+      # 2 player mode
+      if game_mode == "2":
+         while len(positions) > 0:
+         # X player picking
+            if len(player_x) <= len(player_o):
+               answer = int(input("Player X please choose a box to occupy: "))
+               if answer in positions:
+                  positions.remove(answer)
+                  player_x.append(answer)
+                  Box(answer, "X")
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               else:
+                  print("Number has already been taken: ")
 
-         # Score keeper checking X players winning combinations vs score.
-            set_x = set(player_x)
-            for lists in winners:
-               value = set(lists)
-               if value.issubset(set_x):
-                  print("Player X has won!")
-                  positions.clear()
+            # Score keeper checking X players winning combinations vs score.
+               set_x = set(player_x)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_x):
+                     print("Player X has won!")
+                     positions.clear()
 
-      # O player picking
-         elif len(player_x) > len(player_o):
-            answer = int(input("Player O please choose a box to occupy: "))
-            
-            if answer in positions:
-               positions.remove(answer)
-               player_o.append(answer)
-               Box(answer, "O")
-               os.system("cls")
-               print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-            else:
-               print("Number has already been taken: ")
+         # O player picking
+            elif len(player_x) > len(player_o):
+               answer = int(input("Player O please choose a box to occupy: "))
+               
+               if answer in positions:
+                  positions.remove(answer)
+                  player_o.append(answer)
+                  Box(answer, "O")
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               else:
+                  print("Number has already been taken: ")
 
-         # Score keeper checking O players winning combinations vs score.
-            set_o = set(player_o)
-            for lists in winners:
-               value = set(lists)
-               if value.issubset(set_o):
-                  print("Player O has won!")
-                  positions.clear()
+            # Score keeper checking O players winning combinations vs score.
+               set_o = set(player_o)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_o):
+                     print("Player O has won!")
+                     positions.clear()
 
-      quit = input("Press Enter to restart the game, else input X:  ")  
-      if quit == "X":
-         break
+         quit = input("Press Enter to restart the game, else input X:  ")  
+         if quit == "X":
+            break
+         else:
+            continue
+      # Player vs  bot mode.
+      elif game_mode == "1":
+         while len(positions) > 0:
+         # X player picking
+            if len(player_x) <= len(player_o):
+               answer = int(input("Player X please choose a box to occupy: "))
+               if answer in positions:
+                  positions.remove(answer)
+                  player_x.append(answer)
+                  Box(answer, "X")
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               else:
+                  print("Number has already been taken: ")
+
+            # Score keeper checking X players winning combinations vs score.
+               set_x = set(player_x)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_x):
+                     print("Human, u have won against the machines!\n")
+                     positions.clear()  
+
+         # Bot picking
+            elif len(player_x) > len(player_o):
+               answer = rand.randint(1, 9)
+               
+               if answer in positions:
+                  positions.remove(answer)
+                  player_o.append(answer)
+                  Box(answer, "O")
+                  time.sleep(1)
+                  print(f"Bot has picked {answer}.")
+                  time.sleep(2)
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+
+            # Score keeper checking Bots winning combinations vs score.
+               set_o = set(player_o)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_o):
+                     print("Matrix has won, time for the blue pill!")
+                     positions.clear()    
+
+         quit = input("Press Enter to restart the game, else input X:  ")  
+         if quit == "X":
+            break
+         else:
+            continue
       else:
-         continue
-   else:
-      while len(positions) > 0:
-      # X player picking
-         if len(player_x) <= len(player_o):
-            answer = int(input("Player X please choose a box to occupy: "))
-            if answer in positions:
-               positions.remove(answer)
-               player_x.append(answer)
-               Box(answer, "X")
-               os.system("cls")
-               print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-            else:
-               print("Number has already been taken: ")
+         os.system("cls")
+         exit = print("Please enter a value between 1 or 2!")
+         time.sleep(2)
+   except:
+      print("Please enter values between 1-9 to pick boxes!\n Restarting the game!")
+      time.sleep(3)
+      
 
-         # Score keeper checking X players winning combinations vs score.
-            set_x = set(player_x)
-            for lists in winners:
-               value = set(lists)
-               if value.issubset(set_x):
-                  print("Human, u have won against the machines!\n")
-                  positions.clear()  
-
-      # Bot picking
-         elif len(player_x) > len(player_o):
-            answer = rand.randint(1, 9)
-            
-            if answer in positions:
-               positions.remove(answer)
-               player_o.append(answer)
-               Box(answer, "O")
-               time.sleep(1)
-               print(f"Bot has picked {answer}.")
-               time.sleep(2)
-               os.system("cls")
-               print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-
-         # Score keeper checking Bots winning combinations vs score.
-            set_o = set(player_o)
-            for lists in winners:
-               value = set(lists)
-               if value.issubset(set_o):
-                  print("Matrix has won, time for the blue pill!")
-                  positions.clear()    
-
-      quit = input("Press Enter to restart the game, else input X:  ")  
-      if quit == "X":
-         break
-      else:
-         continue
