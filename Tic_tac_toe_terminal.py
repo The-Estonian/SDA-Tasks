@@ -37,9 +37,10 @@ s = "└──────────┴──────────┴──
    ╱  ╲
 """
 # Game starts here!
-# Imports, Random: "cls" in "os" module to increase readability in game by clearing terminal. Randint for Bot.
+# Imports,os, random, time: os to clear terminal, random for bot, time for delay in commands.
 import os
 import random as rand
+import time
 # X value 8 spaces, 4 rows
 b1 = "  ╲  ╱  "
 b2 = "   ╲╱   "
@@ -322,7 +323,7 @@ while True:
             for lists in winners:
                value = set(lists)
                if value.issubset(set_x):
-                  print("Player X has won!")
+                  print("Human, u have won against the machines!\n")
                   positions.clear()  
 
       # Bot picking
@@ -333,17 +334,18 @@ while True:
                positions.remove(answer)
                player_o.append(answer)
                Box(answer, "O")
+               time.sleep(1)
+               print(f"Bot has picked {answer}.")
+               time.sleep(2)
                os.system("cls")
                print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-            else:
-               print("Number has already been taken: ")
 
-         # Score keeper checking O players winning combinations vs score.
+         # Score keeper checking Bots winning combinations vs score.
             set_o = set(player_o)
             for lists in winners:
                value = set(lists)
                if value.issubset(set_o):
-                  print("Player O has won!")
+                  print("Matrix has won, time for the blue pill!")
                   positions.clear()    
 
       quit = input("Press Enter to restart the game, else input X:  ")  
