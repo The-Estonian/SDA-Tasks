@@ -1,7 +1,8 @@
 """
 https://en.wikipedia.org/wiki/Box-drawing_character
-https://en.wikipedia.org/wiki/List_of_Unicode_characters
-https://www.w3.org/TR/xml-entity-names/025.html
+
+https://www.w3schools.com/python/python_ref_set.asp
+https://www.w3schools.com/python/python_for_loops.asp
 
 symbols = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.', '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
 
@@ -43,8 +44,6 @@ s = "└──────────┴──────────┴──
 # Game starts here!
 # Imports, "cls" in "os" module to increase readability in game by clearing terminal.
 import os
-from typing import _SpecialForm
-
 
 # X value 8 spaces, 4 rows
 b1 = "  ╲  ╱  "
@@ -219,7 +218,7 @@ class Box():
 
 while True:
 
-   #os.system("cls")
+   os.system("cls")
 
    a = "┌──────────┬──────────┬──────────┐"
    b = "│          │          │          │"
@@ -240,38 +239,70 @@ while True:
 
 
    print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+# Winning combinations
+   winners = [[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9],
+              [1, 4, 7],
+              [2, 5, 8],
+              [3, 6, 9],
+              [1, 5, 9],
+              [3, 5, 7]]
 
-   win_1 = [1, 2, 3],
-   win_2 = [4, 5, 6],
-   win_3 = [7, 8, 9],
-   win_4 = [1, 4, 7],
-   win_5 = [2, 5, 8],
-   win_6 = [3, 6, 9],
-   win_7 = [1, 5, 9],
-   win_8 = [3, 5, 7]
-   winners = [win_1, win_2, win_3, win_4, win_5]
+# Available numbers to pick
    positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Player reserved numbers
    player_x = []
    player_o = []
 
+# Game loop
    while len(positions) > 0:
-
+# X player picking
       if len(player_x) <= len(player_o):
          answer = int(input("Player X please choose a box to occupy: "))
-         player_x.append(answer)
          if answer in positions:
             positions.remove(answer)
+            player_x.append(answer)
             Box(answer, "X")
+            os.system("cls")
+            print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
          else:
-            print("Number already taken: ")
+            print("Number has already been taken: ")
 
+# Score keeper checking X players winning combinations vs score.
+         set_x = set(player_x)
+         for lists in winners:
+            value = set(lists)
+            if value.issubset(set_x):
+               print("Player X has won!")
+               positions.clear()
+
+# O player picking
       elif len(player_x) > len(player_o):
          answer = int(input("Player O please choose a box to occupy: "))
-         player_o.append(answer)
+         
          if answer in positions:
             positions.remove(answer)
+            player_o.append(answer)
             Box(answer, "O")
+            os.system("cls")
+            print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
          else:
-            print("Number already taken: ")
-      #os.system("cls")
-      print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+            print("Number has already been taken: ")
+
+# Score keeper checking O players winning combinations vs score.
+         set_o = set(player_o)
+         for lists in winners:
+            value = set(lists)
+            if value.issubset(set_o):
+               print("Player O has won!")
+               positions.clear()
+
+   quit = input("Press Enter to restart the game, else input X:  ")  
+   if quit == "X":
+      break
+   else:
+      continue
+      
+
