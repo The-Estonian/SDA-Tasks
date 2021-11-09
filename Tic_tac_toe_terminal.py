@@ -44,8 +44,6 @@ s = "└──────────┴──────────┴──
 # Game starts here!
 # Imports, "cls" in "os" module to increase readability in game by clearing terminal.
 import os
-from typing import _SpecialForm
-
 
 # X value 8 spaces, 4 rows
 b1 = "  ╲  ╱  "
@@ -241,7 +239,7 @@ while True:
 
 
    print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-
+# Winning combinations
    winners = [[1, 2, 3],
               [4, 5, 6],
               [7, 8, 9],
@@ -251,12 +249,16 @@ while True:
               [1, 5, 9],
               [3, 5, 7]]
 
+# Available numbers to pick
    positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Player reserved numbers
    player_x = []
    player_o = []
 
+# Game loop
    while len(positions) > 0:
-
+# X player picking
       if len(player_x) <= len(player_o):
          answer = int(input("Player X please choose a box to occupy: "))
          if answer in positions:
@@ -266,8 +268,9 @@ while True:
             os.system("cls")
             print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
          else:
-            print("Number already been taken: ")
+            print("Number has already been taken: ")
 
+# Score keeper checking X players winning combinations vs score.
          set_x = set(player_x)
          for lists in winners:
             value = set(lists)
@@ -275,6 +278,7 @@ while True:
                print("Player X has won!")
                positions.clear()
 
+# O player picking
       elif len(player_x) > len(player_o):
          answer = int(input("Player O please choose a box to occupy: "))
          
@@ -285,15 +289,20 @@ while True:
             os.system("cls")
             print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
          else:
-            print("Number already been taken: ")
+            print("Number has already been taken: ")
 
+# Score keeper checking O players winning combinations vs score.
          set_o = set(player_o)
          for lists in winners:
             value = set(lists)
             if value.issubset(set_o):
-               print("Player X has won!")
+               print("Player O has won!")
                positions.clear()
 
-   break    
+   quit = input("Press Enter to restart the game, else input X:  ")  
+   if quit == "X":
+      break
+   else:
+      continue
       
 
