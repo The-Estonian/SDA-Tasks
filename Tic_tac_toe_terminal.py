@@ -219,7 +219,7 @@ class Box():
 
 while True:
 
-   os.system("cls")
+   #os.system("cls")
 
    a = "┌──────────┬──────────┬──────────┐"
    b = "│          │          │          │"
@@ -241,9 +241,15 @@ while True:
 
    print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
 
-   winning_condition = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
-                        [1, 4, 7], [2, 5, 8], [3, 6, 9],
-                        [1, 5, 9], [3, 5, 7]]
+   win_1 = [1, 2, 3],
+   win_2 = [4, 5, 6],
+   win_3 = [7, 8, 9],
+   win_4 = [1, 4, 7],
+   win_5 = [2, 5, 8],
+   win_6 = [3, 6, 9],
+   win_7 = [1, 5, 9],
+   win_8 = [3, 5, 7]
+   winners = [win_1, win_2, win_3, win_4, win_5]
    positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
    player_x = []
    player_o = []
@@ -267,7 +273,5 @@ while True:
             Box(answer, "O")
          else:
             print("Number already taken: ")
-      os.system("cls")
+      #os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-
-   break
