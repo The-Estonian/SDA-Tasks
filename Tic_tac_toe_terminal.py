@@ -1,5 +1,6 @@
 """
 https://en.wikipedia.org/wiki/Box-drawing_character
+https://en.wikipedia.org/wiki/List_of_Unicode_characters
 
 https://www.w3schools.com/python/python_ref_set.asp
 https://www.w3schools.com/python/python_for_loops.asp
@@ -188,10 +189,10 @@ class Box():
          q = q[:13] + a3[:8] + q[21:]
          r = r[:13] + a4[:8] + r[21:]
       if self.player == "X":
-         n = h[:13] + b1[:8] + n[21:]
-         p = i[:13] + b2[:8] + p[21:]
-         q = j[:13] + b3[:8] + q[21:]
-         r = k[:13] + b4[:8] + r[21:]
+         n = n[:13] + b1[:8] + n[21:]
+         p = p[:13] + b2[:8] + p[21:]
+         q = q[:13] + b3[:8] + q[21:]
+         r = r[:13] + b4[:8] + r[21:]
 
    # 9th box function to switch value to O or X
    def box_9(self):
@@ -216,7 +217,7 @@ while True:
    a = "┌──────────┬──────────┬──────────┐"
    b = "│          │          │          │"
    c = "│          │          │          │"
-   d = "│     1    │    2     │    3     │"
+   d = "│    1     │    2     │    3     │"
    f = "│          │          │          │"
    g = "├──────────┼──────────┼──────────┤"
    h = "│          │          │          │"
@@ -251,7 +252,7 @@ while True:
 
 # Game loop
    while len(positions) > 0:
-# X player picking
+   # X player picking
       if len(player_x) <= len(player_o):
          answer = int(input("Player X please choose a box to occupy: "))
          if answer in positions:
@@ -263,7 +264,7 @@ while True:
          else:
             print("Number has already been taken: ")
 
-# Score keeper checking X players winning combinations vs score.
+      # Score keeper checking X players winning combinations vs score.
          set_x = set(player_x)
          for lists in winners:
             value = set(lists)
@@ -271,7 +272,7 @@ while True:
                print("Player X has won!")
                positions.clear()
 
-# O player picking
+   # O player picking
       elif len(player_x) > len(player_o):
          answer = int(input("Player O please choose a box to occupy: "))
          
@@ -284,7 +285,7 @@ while True:
          else:
             print("Number has already been taken: ")
 
-# Score keeper checking O players winning combinations vs score.
+      # Score keeper checking O players winning combinations vs score.
          set_o = set(player_o)
          for lists in winners:
             value = set(lists)
