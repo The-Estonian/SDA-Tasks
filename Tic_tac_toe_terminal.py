@@ -39,6 +39,19 @@ a2 = "│      │"
 a3 = "│      │"
 a4 = "╰──────╯" 
 
+# Loss variations
+[1, 2, 3],
+[4, 5, 6],
+[7, 8, 9],
+[1, 4, 7],
+[2, 5, 8],
+[3, 6, 9],
+[1, 5, 9],
+[3, 5, 7]
+
+# One missing loss variations for bot.
+1-2, 2-3, 1-3, 4-5, 5-6, 4-6, 7-8, 8-9, 7-9, 1-4, 4-7, 1-7, 2-5, 5-8, 2-8, 3-6, 6-9, 3-9, 1-5, 5-9, 1-9, 3-5, 5-7, 3-7
+
 """
 # Game starts here!
 # Imports,os, random, time: os to clear terminal, random for bot, time for delay in commands.
@@ -259,13 +272,13 @@ while True:
 
    # Game loop
    try:
-      game_mode = input(" 1 = Player vs Player\n 2 = Player vs Bot\n 3 = Player vs Hard Bot\n Pick your poison:  ")
+      game_mode = input(" 1 = Player vs Player\n 2 = Player vs Bot\n 3 = Player vs Hard Bot\n X = Exit game\n Pick your poison:  ")
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
       # 2 player mode
       if game_mode == "1":
          while len(positions) > 0:
-         # X player picking
+         # Player 1 picking
             if len(player_x) <= len(player_o):
                answer = int(input("Player X please choose a box to occupy: "))
                if answer in positions:
@@ -286,7 +299,7 @@ while True:
                      positions.clear()
                      time.sleep(2)
 
-         # O player picking
+         # Player 2 picking
             elif len(player_x) > len(player_o):
                answer = int(input("Player O please choose a box to occupy: "))
                
@@ -307,8 +320,16 @@ while True:
                      print("Player O has won!")
                      positions.clear()
                      time.sleep(2)
-
-      # Player vs  bot mode.
+         if len(positions) == 0 and len(player_x) + len(player_o) == 9:
+            print("You have a DRAW\n Game restarting in:")
+            time.sleep(1)
+            print("3")
+            time.sleep(1)
+            print("2")
+            time.sleep(1)
+            print("1")
+            time.sleep(1)   
+      # Player 1 vs  bot mode.
       elif game_mode == "2":
          while len(positions) > 0:
          # X player picking
@@ -353,9 +374,17 @@ while True:
                   if value.issubset(set_o):
                      print("Matrix has won, time for the blue pill!")
                      positions.clear()
-                     time.sleep(2)    
-
-      # Harder bot project
+                     time.sleep(2)
+         if len(positions) == 0 and len(player_x) + len(player_o) == 9:
+            print("You have a DRAW\n Game restarting in:")
+            time.sleep(1)
+            print("3")
+            time.sleep(1)
+            print("2")
+            time.sleep(1)
+            print("1")
+            time.sleep(1)      
+      # Player 1 vs stronger bot
       elif game_mode == "3":
          while len(positions) > 0:
          # X player picking
@@ -381,15 +410,40 @@ while True:
 
          # Bot picking
             elif len(player_x) > len(player_o):
+            # 8 positions left   
                if len(positions) == 8:
                   if 5 not in positions:
-                     hard_answer = rand.choices(hard_positions, [100,  1, 100,  1,  0,  1, 100,  1, 100])
+                     hard_answer = rand.choices(hard_positions, [100,  1, 100,  1,  1,  1, 100,  1, 100])
                   else:
-                     hard_answer = rand.choices(hard_positions, [10,  1, 10,  1,100,  1, 10,  1, 10])
+                     hard_answer = rand.choices(hard_positions, [20, 1, 20, 1, 100, 1, 20, 1, 20])
+            # 6 positions left
                elif len(positions) == 6:
-                  hard_answer = rand.choices(hard_positions, [40,  5, 40,  5,  0,  5, 40,  5, 40])
+                  # implemented counters: 5-1, 5-3, 5-7, 5-9, 1-3, 1-7, 3-9, 2-8, 4-6, 7-9
+                  # available counters: 1-2, 2-3, 4-5, 5-6, 7-8, 8-9, 1-4, 4-7, 2-5, 5-8, 3-6, 6-9, 1-9, 3-7
+                  if 5 and 1 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 1, 1, 100])
+                  elif 5 and 3 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 100, 1, 1])
+                  elif 5 and 7 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 100, 1, 1, 1, 1, 1, 1])
+                  elif 5 and 9 in player_x:
+                     hard_answer = rand.choices(hard_positions, [100, 1, 1, 1, 1, 1, 1, 1, 1])
+                  elif 1 and 3 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 100, 1, 1, 1, 1, 1, 1, 1])
+                  elif 1 and 7 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 100, 1, 1, 1, 1, 1])
+                  elif 3 and 9 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 100, 1, 1, 1])
+                  elif 2 and 8 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 100, 1, 1, 1, 1])
+                  elif 4 and 6 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 100, 1, 1, 1, 1])
+                  elif 7 and 9 in player_x:
+                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 1, 100, 1])
+            # 4 positions left
                elif len(positions) == 4:
                   hard_answer = rand.choices(hard_positions, [ 5, 10,  5, 10,  0, 10,  5, 10,  5])
+            # 2 positions left
                elif len(positions) == 2:
                   hard_answer = rand.choices(hard_positions, [ 5,  5,  5,  5,  5,  5,  5,  5,  5])
 
@@ -413,11 +467,28 @@ while True:
                      print("It's alright to pick flowers instead of playing this hard game!")
                      positions.clear()
                      time.sleep(2)
-
+         if len(positions) == 0 and len(player_x) + len(player_o) == 9:
+            print("You have a DRAW\n Game restarting in:")
+            time.sleep(1)
+            print("3")
+            time.sleep(1)
+            print("2")
+            time.sleep(1)
+            print("1")
+            time.sleep(1)  
+      # Loop exit code
+      elif game_mode == "X":
+         break
       else:
          os.system("cls")
          exit = print("Please enter a value between 1, 2 or 3!")
          time.sleep(2)
    except:
-      print("Please enter values between 1-9 to pick boxes!\n Restarting the game!")
-      time.sleep(3)  
+      print("Please enter values between 1-9 to pick boxes!\n Restarting the game in:!")
+      time.sleep(1)
+      print("3")
+      time.sleep(1)
+      print("2")
+      time.sleep(1)
+      print("1")
+      time.sleep(1)  
