@@ -5,10 +5,11 @@ https://en.wikipedia.org/wiki/List_of_Unicode_characters
 https://www.w3schools.com/python/python_ref_set.asp
 https://www.w3schools.com/python/python_for_loops.asp
 https://www.w3schools.com/python/module_random.asp
+https://www.w3schools.com/python/ref_random_choices.asp
 
 symbols = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.', '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
 
-# Empty grid and X, O icons.
+# Backup grid and X, O icons.
 a = "┌──────────┬──────────┬──────────┐"
 b = "│          │          │          │"
 c = "│          │          │          │"
@@ -26,15 +27,18 @@ q = "│          │          │          │"
 r = "│          │          │          │"
 s = "└──────────┴──────────┴──────────┘"
 
-╭──────╮
-│      │
-│      │
-╰──────╯ 
+# X value 8 spaces, 4 rows
+b1 = "  ╲  ╱  "
+b2 = "   ╲╱   "
+b3 = "   ╱╲   "
+b4 = "  ╱  ╲  "
 
-   ╲  ╱
-    ╲╱
-    ╱╲
-   ╱  ╲
+# O value 8 spaces, 4 rows
+a1 = "╭──────╮"
+a2 = "│      │"
+a3 = "│      │"
+a4 = "╰──────╯" 
+
 """
 # Game starts here!
 # Imports,os, random, time: os to clear terminal, random for bot, time for delay in commands.
@@ -235,7 +239,7 @@ while True:
    
 
    #print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-# Winning combinations
+   # Winning combinations
    winners = [[1, 2, 3],
               [4, 5, 6],
               [7, 8, 9],
@@ -245,20 +249,21 @@ while True:
               [1, 5, 9],
               [3, 5, 7]]
 
-# Available numbers to pick
+   # Available numbers to pick
+   hard_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
    positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-# Player reserved numbers
+   # Player reserved numbers
    player_x = []
    player_o = []
 
-# Game loop
+   # Game loop
    try:
-      game_mode = input("1 or 2 players?: ")
+      game_mode = input(" 1 = Player vs Player\n 2 = Player vs Bot\n 3 = Player vs Hard Bot\n Pick your poison:  ")
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
       # 2 player mode
-      if game_mode == "2":
+      if game_mode == "1":
          while len(positions) > 0:
          # X player picking
             if len(player_x) <= len(player_o):
@@ -279,6 +284,7 @@ while True:
                   if value.issubset(set_x):
                      print("Player X has won!")
                      positions.clear()
+                     time.sleep(2)
 
          # O player picking
             elif len(player_x) > len(player_o):
@@ -300,18 +306,14 @@ while True:
                   if value.issubset(set_o):
                      print("Player O has won!")
                      positions.clear()
+                     time.sleep(2)
 
-         quit = input("Press Enter to restart the game, else input X:  ")  
-         if quit == "X":
-            break
-         else:
-            continue
       # Player vs  bot mode.
-      elif game_mode == "1":
+      elif game_mode == "2":
          while len(positions) > 0:
          # X player picking
             if len(player_x) <= len(player_o):
-               answer = int(input("Player X please choose a box to occupy: "))
+               answer = int(input("Human, please choose a box to occupy: "))
                if answer in positions:
                   positions.remove(answer)
                   player_x.append(answer)
@@ -327,7 +329,8 @@ while True:
                   value = set(lists)
                   if value.issubset(set_x):
                      print("Human, u have won against the machines!\n")
-                     positions.clear()  
+                     positions.clear()
+                     time.sleep(2)  
 
          # Bot picking
             elif len(player_x) > len(player_o):
@@ -349,19 +352,72 @@ while True:
                   value = set(lists)
                   if value.issubset(set_o):
                      print("Matrix has won, time for the blue pill!")
-                     positions.clear()    
+                     positions.clear()
+                     time.sleep(2)    
 
-         quit = input("Press Enter to restart the game, else input X:  ")  
-         if quit == "X":
-            break
-         else:
-            continue
+      # Harder bot project
+      elif game_mode == "3":
+         while len(positions) > 0:
+         # X player picking
+            if len(player_x) <= len(player_o):
+               answer = int(input("Human, please choose a box to occupy: "))
+               if answer in positions:
+                  positions.remove(answer)
+                  player_x.append(answer)
+                  Box(answer, "X")
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               else:
+                  print("Number has already been taken: ")
+
+            # Score keeper checking X players winning combinations vs score.
+               set_x = set(player_x)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_x):
+                     print("Human, u have won against the machines!\n")
+                     positions.clear()
+                     time.sleep(2)  
+
+         # Bot picking
+            elif len(player_x) > len(player_o):
+               if len(positions) == 8:
+                  if 5 not in positions:
+                     hard_answer = rand.choices(hard_positions, [100,  1, 100,  1,  0,  1, 100,  1, 100])
+                  else:
+                     hard_answer = rand.choices(hard_positions, [10,  1, 10,  1,100,  1, 10,  1, 10])
+               elif len(positions) == 6:
+                  hard_answer = rand.choices(hard_positions, [40,  5, 40,  5,  0,  5, 40,  5, 40])
+               elif len(positions) == 4:
+                  hard_answer = rand.choices(hard_positions, [ 5, 10,  5, 10,  0, 10,  5, 10,  5])
+               elif len(positions) == 2:
+                  hard_answer = rand.choices(hard_positions, [ 5,  5,  5,  5,  5,  5,  5,  5,  5])
+
+               answer = hard_answer[0]
+               if answer in positions:
+                  positions.remove(answer)
+                  player_o.append(answer)
+                  Box(answer, "O")
+                  time.sleep(1)
+                  print(f"Bot has picked {answer}.")
+                  time.sleep(2)
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+                  
+
+            # Score keeper checking Bots winning combinations vs score.
+               set_o = set(player_o)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_o):
+                     print("It's alright to pick flowers instead of playing this hard game!")
+                     positions.clear()
+                     time.sleep(2)
+
       else:
          os.system("cls")
-         exit = print("Please enter a value between 1 or 2!")
+         exit = print("Please enter a value between 1, 2 or 3!")
          time.sleep(2)
    except:
       print("Please enter values between 1-9 to pick boxes!\n Restarting the game!")
-      time.sleep(3)
-      
-
+      time.sleep(3)  
