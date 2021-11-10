@@ -250,6 +250,20 @@ while True:
    r = "│          │          │          │"
    s = "└──────────┴──────────┴──────────┘"
    
+   
+   image = """
+   ┌───────────────────────────┐
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   ├───────────────────────────┤
+   │ 3 = Player vs Hard Bot    │
+   ├───────────────────────────┤
+   │ X = Exit game             │
+   ├───────────────────────────┤
+   │ Pick your poison:         │
+   └───────────────────────────┘
+   """
 
    #print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
    # Winning combinations
@@ -272,7 +286,32 @@ while True:
 
    # Game loop
    try:
-      game_mode = input(" 1 = Player vs Player\n 2 = Player vs Bot\n 3 = Player vs Hard Bot\n X = Exit game\n Pick your poison:  ")
+      print("Initializing game.")
+      time.sleep(2)
+      os.system("cls")
+      print("Initializing game..")
+      time.sleep(2)
+      os.system("cls")
+      print("Initializing game...")
+      time.sleep(2)
+      os.system("cls")
+      print("Welcome to the Tic Tac Toe game!")
+      time.sleep(3)
+      os.system("cls")
+      print("Loading variables...")
+      time.sleep(3)
+      os.system("cls")
+      game_mode = input("""
+      ┌───────────────────────────┐
+      │ 1 = Player vs Player      │
+      ├───────────────────────────┤
+      │ 2 = Player vs Bot         │
+      ├───────────────────────────┤
+      │ 3 = Player vs Hard Bot    │
+      ├───────────────────────────┤
+      │ X = Exit game             │
+      └───────────────────────────┘
+      Pick your poison: """)
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
       # 2 player mode
@@ -484,7 +523,7 @@ while True:
          exit = print("Please enter a value between 1, 2 or 3!")
          time.sleep(2)
    except:
-      print("Please enter values between 1-9 to pick boxes!\n Restarting the game in:!")
+      print("Please enter values between 1-9 to pick boxes!\n Restarting the game for glitch free gaming in: ")
       time.sleep(1)
       print("3")
       time.sleep(1)
