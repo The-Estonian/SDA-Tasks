@@ -6,6 +6,8 @@ https://www.w3schools.com/python/python_ref_set.asp
 https://www.w3schools.com/python/python_for_loops.asp
 https://www.w3schools.com/python/module_random.asp
 https://www.w3schools.com/python/ref_random_choices.asp
+https://student.cs.uwaterloo.ca/~cs452/terminal.html
+https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html
 
 symbols = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.', '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
 
@@ -301,17 +303,20 @@ while True:
       print("Loading variables...")
       time.sleep(3)
       os.system("cls")
-      game_mode = input("""
-      ┌───────────────────────────┐
-      │ 1 = Player vs Player      │
-      ├───────────────────────────┤
-      │ 2 = Player vs Bot         │
-      ├───────────────────────────┤
-      │ 3 = Player vs Hard Bot    │
-      ├───────────────────────────┤
-      │ X = Exit game             │
-      └───────────────────────────┘
-      Pick your poison: """)
+      print("""
+   ┌───────────────────────────┐
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   ├───────────────────────────┤
+   │ 3 = Player vs Sneaky Bot  │
+   ├───────────────────────────┤
+   │ X = Exit game             │
+   ├───────────────────────────┤
+   │                           │
+   └───────────────────────────┘
+                  """, end='\033[F\033[A   │ Pick your poison: ') 
+      game_mode = input()
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
       # 2 player mode
