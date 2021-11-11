@@ -243,46 +243,6 @@ class Box():
          q = q[:24] + b3[:8] + q[32:]
          r = r[:24] + b4[:8] + r[32:]
 
-#########################################################################################
-class Player():
-   """
-   Class Player()
-            
-            def __init__(player_1, player_2, answer)
-            self.player_1 = player_1
-            self.player_2 = player2
-            self.answer = answer
-
-
-
-            def player()
-            def score()
-
-
-
-    if len(player_1) <= len(player_2):
-               answer = int(input("Player X please choose a box to occupy: "))
-               if answer in positions:
-                  positions.remove(answer)
-                  player_x.append(answer)
-                  Box(answer, "X")
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-               else:
-                  print("Number has already been taken: ")
-
-            # Score keeper checking X players winning combinations vs score.
-               set_x = set(player_x)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_x):
-                     print("Player X has won!")
-                     positions.clear()
-                     time.sleep(2)
-
-   """
-########################################################################################
-
 while True:
 
    os.system("cls")
@@ -305,7 +265,6 @@ while True:
    r = "│          │          │          │"
    s = "└──────────┴──────────┴──────────┘"
 
-   #print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
    # Winning combinations
    winners = [[1, 2, 3],
               [4, 5, 6],
@@ -317,9 +276,10 @@ while True:
               [3, 5, 7]]
 
    # Available numbers to pick
+   game_mode_options = ["1", "2", "3", "X"]
    hard_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
    positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+   str_positions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
    # Player reserved numbers
    player_x = []
    player_o = []
@@ -335,8 +295,9 @@ while True:
       print("Initializing game...")
       time.sleep(2)
       os.system("cls")
-      print("Welcome to the Tic Tac Toe game!")
-      time.sleep(3)
+      print("""Welcome to the "Game" \n
+                                                      sig. Crash Override, little Neo helped also.""")
+      time.sleep(4)
       os.system("cls")
       print("Loading variables...")
       time.sleep(3)
@@ -354,7 +315,13 @@ while True:
    │                           │
    └───────────────────────────┘
                   """, end='\033[F\033[A   │ Pick your poison: ') 
-      game_mode = input()
+      # NEEDS REWORK ##########################################################
+      game_mode_var = input()
+      if str(game_mode_var) not in game_mode_options:
+         print("Please choose a correct game mode!")
+      elif game_mode_var in game_mode_options:
+         game_mode = str(game_mode_var)
+      #########################################################################
       os.system("cls")
       print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
       # 2 player mode
@@ -362,11 +329,14 @@ while True:
          while len(positions) > 0:
          # Player 1 picking
             if len(player_x) <= len(player_o):
-               answer = int(input("Player X please choose a box to occupy: "))
-               if answer in positions:
-                  positions.remove(answer)
-                  player_x.append(answer)
-                  Box(answer, "X")
+               answer_str = input("Player X please choose a box to occupy: ")
+               if answer_str not in str_positions:
+                  print("Please enter valid numbers only!")
+               elif int(answer_str) in positions:
+                  answer_int = int(answer_str)
+                  positions.remove(answer_int)
+                  player_x.append(answer_int)
+                  Box(answer_int, "X")
                   os.system("cls")
                   print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
                else:
@@ -379,18 +349,29 @@ while True:
                   if value.issubset(set_x):
                      print("Player X has won!")
                      positions.clear()
-                     time.sleep(2)
+                     print("Restarting the game for glitch free gaming in: ")
+                     time.sleep(1)
+                     print("3")
+                     time.sleep(1)
+                     print("2")
+                     time.sleep(1)
+                     print("1")
+                     time.sleep(1)
 
          # Player 2 picking
             elif len(player_x) > len(player_o):
-               answer = int(input("Player O please choose a box to occupy: "))
-               
-               if answer in positions:
-                  positions.remove(answer)
-                  player_o.append(answer)
-                  Box(answer, "O")
+               answer_str = input("Player O please choose a box to occupy: ")
+               if answer_str not in str_positions:
+                  print("Please enter valid numbers only!")
+               elif int(answer_str) in positions:
+                  answer_int = int(answer_str)
+                  positions.remove(answer_int)
+                  player_o.append(answer_int)
+                  Box(answer_int, "O")
                   os.system("cls")
                   print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               elif answer_int not in hard_positions:
+                  print("Please enter valid numbers only!")
                else:
                   print("Number has already been taken: ")
 
@@ -401,28 +382,41 @@ while True:
                   if value.issubset(set_o):
                      print("Player O has won!")
                      positions.clear()
-                     time.sleep(2)
+                     print("Restarting the game for glitch free gaming in: ")
+                     time.sleep(1)
+                     print("3")
+                     time.sleep(1)
+                     print("2")
+                     time.sleep(1)
+                     print("1")
+                     time.sleep(1) 
+
          if len(positions) == 0 and len(player_x) + len(player_o) == 9:
-            print("You have a DRAW\n Game restarting in:")
+            print("You have a DRAW\n Restarting the game for glitch free gaming in: ")
             time.sleep(1)
             print("3")
             time.sleep(1)
             print("2")
             time.sleep(1)
             print("1")
-            time.sleep(1)   
+            time.sleep(1)     
       # Player 1 vs  bot mode.
       elif game_mode == "2":
          while len(positions) > 0:
          # X player picking
             if len(player_x) <= len(player_o):
-               answer = int(input("Human, please choose a box to occupy: "))
-               if answer in positions:
-                  positions.remove(answer)
-                  player_x.append(answer)
-                  Box(answer, "X")
+               answer_str = input("Human, please choose a box to occupy: ")
+               if answer_str not in str_positions:
+                  print("Please enter valid numbers only!")
+               elif int(answer_str) in positions:
+                  answer_int = int(answer_str)
+                  positions.remove(answer_int)
+                  player_x.append(answer_int)
+                  Box(answer_int, "X")
                   os.system("cls")
                   print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               elif answer_int not in hard_positions:
+                  print("Please enter valid numbers only!")
                else:
                   print("Number has already been taken: ")
 
@@ -433,7 +427,14 @@ while True:
                   if value.issubset(set_x):
                      print("Human, u have won against the machines!\n")
                      positions.clear()
-                     time.sleep(2)  
+                     print("Restarting the game for glitch free gaming in: ")
+                     time.sleep(1)
+                     print("3")
+                     time.sleep(1)
+                     print("2")
+                     time.sleep(1)
+                     print("1")
+                     time.sleep(1)  
 
          # Bot picking
             elif len(player_x) > len(player_o):
@@ -456,7 +457,14 @@ while True:
                   if value.issubset(set_o):
                      print("Matrix has won, time for the blue pill!")
                      positions.clear()
-                     time.sleep(2)
+                     print("Restarting the game for glitch free gaming in: ")
+                     time.sleep(1)
+                     print("3")
+                     time.sleep(1)
+                     print("2")
+                     time.sleep(1)
+                     print("1")
+                     time.sleep(1)
          if len(positions) == 0 and len(player_x) + len(player_o) == 9:
             print("You have a DRAW\n Game restarting in:")
             time.sleep(1)
@@ -471,13 +479,18 @@ while True:
          while len(positions) > 0:
          # X player picking
             if len(player_x) <= len(player_o):
-               answer = int(input("Human, please choose a box to occupy: "))
-               if answer in positions:
-                  positions.remove(answer)
-                  player_x.append(answer)
-                  Box(answer, "X")
+               answer_str = input("Human, please choose a box to occupy: ")
+               if answer_str not in str_positions:
+                  print("Please enter valid numbers only!")
+               elif int(answer_str) in positions:
+                  answer_int = int(answer_str)
+                  positions.remove(answer_int)
+                  player_x.append(answer_int)
+                  Box(answer_int, "X")
                   os.system("cls")
                   print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               elif answer_int not in hard_positions:
+                  print("Please enter valid numbers only!")
                else:
                   print("Number has already been taken: ")
 
@@ -488,7 +501,14 @@ while True:
                   if value.issubset(set_x):
                      print("Human, u have won against the machines!\n")
                      positions.clear()
-                     time.sleep(2)  
+                     print("Restarting the game for glitch free gaming in: ")
+                     time.sleep(1)
+                     print("3")
+                     time.sleep(1)
+                     print("2")
+                     time.sleep(1)
+                     print("1")
+                     time.sleep(1)  
 
          # Bot picking
             elif len(player_x) > len(player_o):
@@ -548,7 +568,14 @@ while True:
                   if value.issubset(set_o):
                      print("It's alright to pick flowers instead of playing this hard game!")
                      positions.clear()
-                     time.sleep(2)
+                     print("Restarting the game for glitch free gaming in: ")
+                     time.sleep(1)
+                     print("3")
+                     time.sleep(1)
+                     print("2")
+                     time.sleep(1)
+                     print("1")
+                     time.sleep(1)
          if len(positions) == 0 and len(player_x) + len(player_o) == 9:
             print("You have a DRAW\n Game restarting in:")
             time.sleep(1)
