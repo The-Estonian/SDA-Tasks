@@ -41,6 +41,20 @@ a2 = "│      │"
 a3 = "│      │"
 a4 = "╰──────╯" 
 
+
+   ┌───────────────────────────┐
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   ├───────────────────────────┤
+   │ 3 = Player vs Hard Bot    │
+   ├───────────────────────────┤
+   │ X = Exit game             │
+   ├───────────────────────────┤
+   │ Pick your poison:         │
+   └───────────────────────────┘
+
+
 # Loss variations
 [1, 2, 3],
 [4, 5, 6],
@@ -229,12 +243,51 @@ class Box():
          q = q[:24] + b3[:8] + q[32:]
          r = r[:24] + b4[:8] + r[32:]
 
-      
+#########################################################################################
+class Player():
+   """
+   Class Player()
+            
+            def __init__(player_1, player_2, answer)
+            self.player_1 = player_1
+            self.player_2 = player2
+            self.answer = answer
+
+
+
+            def player()
+            def score()
+
+
+
+    if len(player_1) <= len(player_2):
+               answer = int(input("Player X please choose a box to occupy: "))
+               if answer in positions:
+                  positions.remove(answer)
+                  player_x.append(answer)
+                  Box(answer, "X")
+                  os.system("cls")
+                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
+               else:
+                  print("Number has already been taken: ")
+
+            # Score keeper checking X players winning combinations vs score.
+               set_x = set(player_x)
+               for lists in winners:
+                  value = set(lists)
+                  if value.issubset(set_x):
+                     print("Player X has won!")
+                     positions.clear()
+                     time.sleep(2)
+
+   """
+########################################################################################
 
 while True:
 
    os.system("cls")
    
+   # Coordinates
    a = "┌──────────┬──────────┬──────────┐"
    b = "│          │          │          │"
    c = "│          │          │          │"
@@ -251,21 +304,6 @@ while True:
    q = "│    7     │    8     │    9     │"
    r = "│          │          │          │"
    s = "└──────────┴──────────┴──────────┘"
-   
-   
-   image = """
-   ┌───────────────────────────┐
-   │ 1 = Player vs Player      │
-   ├───────────────────────────┤
-   │ 2 = Player vs Bot         │
-   ├───────────────────────────┤
-   │ 3 = Player vs Hard Bot    │
-   ├───────────────────────────┤
-   │ X = Exit game             │
-   ├───────────────────────────┤
-   │ Pick your poison:         │
-   └───────────────────────────┘
-   """
 
    #print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
    # Winning combinations
@@ -536,4 +574,3 @@ while True:
       time.sleep(1)
       print("1")
       time.sleep(1)  
-test
