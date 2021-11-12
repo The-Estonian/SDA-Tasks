@@ -97,23 +97,12 @@ c3 ="└────────────────────────
 d1 ="┌───────────────────────────┐"
 d2 ="│    Loading variables      │"
 d3 ="└───────────────────────────┘"
-
-
-
 c4 = "█"
-#c5 =" ███████████████████████████ 27"
 
 init_num = 1
 init_num2 = 2
 load_num = 1
 load_num2 = 2
-# for i in range(27):
-#    c2 = c2[:load_num]+c4+c2[load_num2:]
-#    load_num += 1
-#    load_num2 +=1
-#    time.sleep(0.20)
-#    os.system("cls")
-#    print(f"{c1}\n{c2}\n{c3}\n")
 
 # Game menu variables
 def game_menu():
@@ -132,7 +121,6 @@ def game_menu():
    │                           │
    └───────────────────────────┘
                   """, end='\033[F\033[A   │ Pick your poison: ')
-   return
 
 def fresh_grid():
    os.system("cls")
