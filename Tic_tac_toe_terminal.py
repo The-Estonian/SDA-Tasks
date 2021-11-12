@@ -373,7 +373,7 @@ while True:
    # Player reserved numbers
    player_1 = [] # Positions gets filled into players lists and compared to winners list
    player_2 = [] # Positions gets filled into players lists and compared to winners list
-
+   win_var = 0
    os.system("cls")
    game_menu()
    game_mode_var = input()
@@ -411,6 +411,7 @@ while True:
                for lists in winners:
                   value = set(lists)
                   if value.issubset(set_x):
+                     win_var = 1
                      print("Player 1 has won!")
                      positions.clear()
                      print("Entering Game menu in: ")
@@ -445,6 +446,7 @@ while True:
                for lists in winners:
                   value = set(lists)
                   if value.issubset(set_o):
+                     win_var = 1
                      print("Player 2 has won!")
                      positions.clear()
                      print("Entering Game menu in: ")
@@ -456,7 +458,7 @@ while True:
                      print("1")
                      time.sleep(1) 
 
-         if len(positions) == 0 and len(player_1) + len(player_2) == 9:
+         if len(positions) == 0 and len(player_1) + len(player_2) == 9 and win_var == 0:
             print("You have a DRAW\n Entering Game menu in: ")
             time.sleep(1)
             print("3")
@@ -492,6 +494,7 @@ while True:
                for lists in winners:
                   value = set(lists)
                   if value.issubset(set_x):
+                     win_var = 1
                      print("Human, u have won against the machines!\n")
                      positions.clear()
                      print("Entering Game menu in: ")
@@ -522,6 +525,7 @@ while True:
                   value = set(lists)
                   if value.issubset(set_o):
                      print("Matrix has won, time for the blue pill!")
+                     win_var = 1
                      positions.clear()
                      print("Entering Game menu in: ")
                      time.sleep(1)
@@ -531,7 +535,7 @@ while True:
                      time.sleep(1)
                      print("1")
                      time.sleep(1)
-         if len(positions) == 0 and len(player_1) + len(player_2) == 9:
+         if len(positions) == 0 and len(player_1) + len(player_2) == 9 and win_var == 0:
             print("You have a DRAW\n Entering Game menu in:")
             time.sleep(1)
             print("3")
@@ -567,6 +571,7 @@ while True:
                for lists in winners:
                   value = set(lists)
                   if value.issubset(set_x):
+                     win_var = 1
                      print("Human, u have won against the machines!\n")
                      positions.clear()
                      print("Entering Game menu in: ")
@@ -633,6 +638,7 @@ while True:
                   value = set(lists)
                   if value.issubset(set_o):
                      print("It's alright to pick flowers instead of playing this hard game!")
+                     win_var = 1
                      positions.clear()
                      print("Entering Game menu in: ")
                      time.sleep(1)
@@ -642,7 +648,7 @@ while True:
                      time.sleep(1)
                      print("1")
                      time.sleep(1)
-         if len(positions) == 0 and len(player_1) + len(player_2) == 9:
+         if len(positions) == 0 and len(player_1) + len(player_2) == 9 and win_var == 0:
             print("You have a DRAW\n Entering Game menu in:")
             time.sleep(1)
             print("3")
