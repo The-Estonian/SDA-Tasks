@@ -119,6 +119,8 @@ load_num2 = 2
 def game_menu():
    print("""
    ┌───────────────────────────┐
+   │  A Game of Tic-Tac-Toe    │ 
+   │───────────────────────────│
    │ 1 = Player vs Player      │
    ├───────────────────────────┤
    │ 2 = Player vs Bot         │
@@ -300,7 +302,6 @@ for i in range(11):
    time.sleep(0.05)
    os.system("cls")
    print(f"{c1}\n{c2}\n{c3}\n")
-time.sleep(1)
 os.system("cls")
 
 for i in range(27):
@@ -317,23 +318,67 @@ for i in range(27):
    else:
       pass
 
-   time.sleep(rand.uniform(0, 1)/3)
+   time.sleep(rand.uniform(0, 1)/5)
    os.system("cls")
    print(f"{c1}\n{c2}\n{c3}\n")
    print(f"{d1}\n{d2}\n{d3}\n")
 time.sleep(1)
 os.system("cls")
-
 print("""
-█████████  █  ███████       █████████    █     ███████      █████████  ███████  ███████
-    █      █  █     █           █      █   █   █     █          █      █     █  █
-    █      █  █        ██       █     █     █  █        ██      █      █     █  ██████
-    █      █  █     █           █     █ ███ █  █     █          █      █     █  █
-    █      █  ███████           █     █     █  ███████          █      ███████  ███████
+   ┌───────────────────────────┐
+   │  A Game of Tic-Tac-Toe    │ 
+   └───────────────────────────┘
 """)
-time.sleep(3)
+time.sleep(0.1)
 os.system("cls")
-
+print("""
+   ┌───────────────────────────┐
+   │  A Game of Tic-Tac-Toe    │ 
+   │───────────────────────────│
+   │ 1 = Player vs Player      │
+   └───────────────────────────┘
+""")
+time.sleep(0.1)
+os.system("cls")
+print("""
+   ┌───────────────────────────┐
+   │  A Game of Tic-Tac-Toe    │ 
+   │───────────────────────────│
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   └───────────────────────────┘
+""")
+time.sleep(0.1)
+os.system("cls")
+print("""
+   ┌───────────────────────────┐
+   │  A Game of Tic-Tac-Toe    │ 
+   │───────────────────────────│
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   ├───────────────────────────┤
+   │ 3 = Player vs Sneaky Bot  │
+   └───────────────────────────┘
+""")
+time.sleep(0.1)
+os.system("cls")
+print("""
+   ┌───────────────────────────┐
+   │  A Game of Tic-Tac-Toe    │ 
+   │───────────────────────────│
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   ├───────────────────────────┤
+   │ 3 = Player vs Sneaky Bot  │
+   ├───────────────────────────┤
+   │ X = Exit game             │
+   └───────────────────────────┘
+""")
+time.sleep(0.1)
+os.system("cls")
 
 # Game loop
 while True:
