@@ -11,7 +11,7 @@ https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html
 
 symbols = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.', '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
 
-# Backup grid and X, O icons.
+# Backup grid and X, O icons, menu and bot variations.
 a = "┌──────────┬──────────┬──────────┐"
 b = "│          │          │          │"
 c = "│          │          │          │"
@@ -85,6 +85,25 @@ a1 = "╭──────╮"
 a2 = "│      │"
 a3 = "│      │"
 a4 = "╰──────╯" 
+def game_menu():
+   print("""
+   ┌───────────────────────────┐
+   │ 1 = Player vs Player      │
+   ├───────────────────────────┤
+   │ 2 = Player vs Bot         │
+   ├───────────────────────────┤
+   │ 3 = Player vs Sneaky Bot  │
+   ├───────────────────────────┤
+   │ X = Exit game             │
+   ├───────────────────────────┤
+   │                           │
+   └───────────────────────────┘
+                  """, end='\033[F\033[A   │ Pick your poison: ')
+   return
+
+def fresh_grid():
+   os.system("cls")
+   print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
 
 # Class Box() to fill the grid based on answers
 class Box():
@@ -243,361 +262,370 @@ class Box():
          q = q[:24] + b3[:8] + q[32:]
          r = r[:24] + b4[:8] + r[32:]
 
-while True:
+os.system("cls")
 
+# Coordinates
+a = "┌──────────┬──────────┬──────────┐"
+b = "│          │          │          │"
+c = "│          │          │          │"
+d = "│    1     │    2     │    3     │"
+f = "│          │          │          │"
+g = "├──────────┼──────────┼──────────┤"
+h = "│          │          │          │"
+i = "│          │          │          │"
+j = "│    4     │    5     │    6     │"
+k = "│          │          │          │"
+m = "├──────────┼──────────┼──────────┤"
+n = "│          │          │          │"
+p = "│          │          │          │"
+q = "│    7     │    8     │    9     │"
+r = "│          │          │          │"
+s = "└──────────┴──────────┴──────────┘"
+
+# Winning combinations
+winners = [[1, 2, 3],
+           [4, 5, 6],
+           [7, 8, 9],
+           [1, 4, 7],
+           [2, 5, 8],
+           [3, 6, 9],
+           [1, 5, 9],
+           [3, 5, 7]]
+
+# Available numbers to pick
+game_mode_options = ["1", "2", "3", "X"]
+hard_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+str_positions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# Player reserved numbers
+player_x = []
+player_o = []
+
+# Game loop
+try:
+   print("Initializing game.")
+   time.sleep(2)
    os.system("cls")
-   
-   # Coordinates
-   a = "┌──────────┬──────────┬──────────┐"
-   b = "│          │          │          │"
-   c = "│          │          │          │"
-   d = "│    1     │    2     │    3     │"
-   f = "│          │          │          │"
-   g = "├──────────┼──────────┼──────────┤"
-   h = "│          │          │          │"
-   i = "│          │          │          │"
-   j = "│    4     │    5     │    6     │"
-   k = "│          │          │          │"
-   m = "├──────────┼──────────┼──────────┤"
-   n = "│          │          │          │"
-   p = "│          │          │          │"
-   q = "│    7     │    8     │    9     │"
-   r = "│          │          │          │"
-   s = "└──────────┴──────────┴──────────┘"
+   print("Initializing game..")
+   time.sleep(2)
+   os.system("cls")
+   print("Initializing game...")
+   time.sleep(2)
+   os.system("cls")
+   print("""Welcome to the "Game" \n
+                                                   sig. Crash Override, little Neo helped also.""")
+   time.sleep(4)
+   os.system("cls")
+   print("Loading variables...")
+   time.sleep(3)
 
-   # Winning combinations
-   winners = [[1, 2, 3],
-              [4, 5, 6],
-              [7, 8, 9],
-              [1, 4, 7],
-              [2, 5, 8],
-              [3, 6, 9],
-              [1, 5, 9],
-              [3, 5, 7]]
-
-   # Available numbers to pick
-   game_mode_options = ["1", "2", "3", "X"]
-   hard_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-   positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-   str_positions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-   # Player reserved numbers
-   player_x = []
-   player_o = []
-
-   # Game loop
-   try:
-      print("Initializing game.")
-      time.sleep(2)
+   while True:
       os.system("cls")
-      print("Initializing game..")
-      time.sleep(2)
-      os.system("cls")
-      print("Initializing game...")
-      time.sleep(2)
-      os.system("cls")
-      print("""Welcome to the "Game" \n
-                                                      sig. Crash Override, little Neo helped also.""")
-      time.sleep(4)
-      os.system("cls")
-      print("Loading variables...")
-      time.sleep(3)
-      os.system("cls")
-      print("""
-   ┌───────────────────────────┐
-   │ 1 = Player vs Player      │
-   ├───────────────────────────┤
-   │ 2 = Player vs Bot         │
-   ├───────────────────────────┤
-   │ 3 = Player vs Sneaky Bot  │
-   ├───────────────────────────┤
-   │ X = Exit game             │
-   ├───────────────────────────┤
-   │                           │
-   └───────────────────────────┘
-                  """, end='\033[F\033[A   │ Pick your poison: ') 
-      # NEEDS REWORK ##########################################################
+      game_menu()
       game_mode_var = input()
       if str(game_mode_var) not in game_mode_options:
-         print("Please choose a correct game mode!")
-      elif game_mode_var in game_mode_options:
-         game_mode = str(game_mode_var)
-      #########################################################################
-      os.system("cls")
-      print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-      # 2 player mode
-      if game_mode == "1":
-         while len(positions) > 0:
-         # Player 1 picking
-            if len(player_x) <= len(player_o):
-               answer_str = input("Player X please choose a box to occupy: ")
-               if answer_str not in str_positions:
-                  print("Please enter valid numbers only!")
-               elif int(answer_str) in positions:
-                  answer_int = int(answer_str)
-                  positions.remove(answer_int)
-                  player_x.append(answer_int)
-                  Box(answer_int, "X")
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-               else:
-                  print("Number has already been taken: ")
-
-            # Score keeper checking X players winning combinations vs score.
-               set_x = set(player_x)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_x):
-                     print("Player X has won!")
-                     positions.clear()
-                     print("Restarting the game for glitch free gaming in: ")
-                     time.sleep(1)
-                     print("3")
-                     time.sleep(1)
-                     print("2")
-                     time.sleep(1)
-                     print("1")
-                     time.sleep(1)
-
-         # Player 2 picking
-            elif len(player_x) > len(player_o):
-               answer_str = input("Player O please choose a box to occupy: ")
-               if answer_str not in str_positions:
-                  print("Please enter valid numbers only!")
-               elif int(answer_str) in positions:
-                  answer_int = int(answer_str)
-                  positions.remove(answer_int)
-                  player_o.append(answer_int)
-                  Box(answer_int, "O")
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-               elif answer_int not in hard_positions:
-                  print("Please enter valid numbers only!")
-               else:
-                  print("Number has already been taken: ")
-
-            # Score keeper checking O players winning combinations vs score.
-               set_o = set(player_o)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_o):
-                     print("Player O has won!")
-                     positions.clear()
-                     print("Restarting the game for glitch free gaming in: ")
-                     time.sleep(1)
-                     print("3")
-                     time.sleep(1)
-                     print("2")
-                     time.sleep(1)
-                     print("1")
-                     time.sleep(1) 
-
-         if len(positions) == 0 and len(player_x) + len(player_o) == 9:
-            print("You have a DRAW\n Restarting the game for glitch free gaming in: ")
-            time.sleep(1)
-            print("3")
-            time.sleep(1)
-            print("2")
-            time.sleep(1)
-            print("1")
-            time.sleep(1)     
-      # Player 1 vs  bot mode.
-      elif game_mode == "2":
-         while len(positions) > 0:
-         # X player picking
-            if len(player_x) <= len(player_o):
-               answer_str = input("Human, please choose a box to occupy: ")
-               if answer_str not in str_positions:
-                  print("Please enter valid numbers only!")
-               elif int(answer_str) in positions:
-                  answer_int = int(answer_str)
-                  positions.remove(answer_int)
-                  player_x.append(answer_int)
-                  Box(answer_int, "X")
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-               elif answer_int not in hard_positions:
-                  print("Please enter valid numbers only!")
-               else:
-                  print("Number has already been taken: ")
-
-            # Score keeper checking X players winning combinations vs score.
-               set_x = set(player_x)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_x):
-                     print("Human, u have won against the machines!\n")
-                     positions.clear()
-                     print("Restarting the game for glitch free gaming in: ")
-                     time.sleep(1)
-                     print("3")
-                     time.sleep(1)
-                     print("2")
-                     time.sleep(1)
-                     print("1")
-                     time.sleep(1)  
-
-         # Bot picking
-            elif len(player_x) > len(player_o):
-               answer = rand.randint(1, 9)
-               
-               if answer in positions:
-                  positions.remove(answer)
-                  player_o.append(answer)
-                  Box(answer, "O")
-                  time.sleep(1)
-                  print(f"Bot has picked {answer}.")
-                  time.sleep(2)
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-
-            # Score keeper checking Bots winning combinations vs score.
-               set_o = set(player_o)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_o):
-                     print("Matrix has won, time for the blue pill!")
-                     positions.clear()
-                     print("Restarting the game for glitch free gaming in: ")
-                     time.sleep(1)
-                     print("3")
-                     time.sleep(1)
-                     print("2")
-                     time.sleep(1)
-                     print("1")
-                     time.sleep(1)
-         if len(positions) == 0 and len(player_x) + len(player_o) == 9:
-            print("You have a DRAW\n Game restarting in:")
-            time.sleep(1)
-            print("3")
-            time.sleep(1)
-            print("2")
-            time.sleep(1)
-            print("1")
-            time.sleep(1)      
-      # Player 1 vs stronger bot
-      elif game_mode == "3":
-         while len(positions) > 0:
-         # X player picking
-            if len(player_x) <= len(player_o):
-               answer_str = input("Human, please choose a box to occupy: ")
-               if answer_str not in str_positions:
-                  print("Please enter valid numbers only!")
-               elif int(answer_str) in positions:
-                  answer_int = int(answer_str)
-                  positions.remove(answer_int)
-                  player_x.append(answer_int)
-                  Box(answer_int, "X")
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-               elif answer_int not in hard_positions:
-                  print("Please enter valid numbers only!")
-               else:
-                  print("Number has already been taken: ")
-
-            # Score keeper checking X players winning combinations vs score.
-               set_x = set(player_x)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_x):
-                     print("Human, u have won against the machines!\n")
-                     positions.clear()
-                     print("Restarting the game for glitch free gaming in: ")
-                     time.sleep(1)
-                     print("3")
-                     time.sleep(1)
-                     print("2")
-                     time.sleep(1)
-                     print("1")
-                     time.sleep(1)  
-
-         # Bot picking
-            elif len(player_x) > len(player_o):
-            # 8 positions left   
-               if len(positions) == 8:
-                  if 5 not in positions:
-                     hard_answer = rand.choices(hard_positions, [100,  1, 100,  1,  1,  1, 100,  1, 100])
-                  else:
-                     hard_answer = rand.choices(hard_positions, [20, 1, 20, 1, 100, 1, 20, 1, 20])
-            # 6 positions left
-               elif len(positions) == 6:
-                  # implemented counters: 5-1, 5-3, 5-7, 5-9, 1-3, 1-7, 3-9, 2-8, 4-6, 7-9
-                  # available counters: 1-2, 2-3, 4-5, 5-6, 7-8, 8-9, 1-4, 4-7, 2-5, 5-8, 3-6, 6-9, 1-9, 3-7
-                  if 5 and 1 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 1, 1, 100])
-                  elif 5 and 3 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 100, 1, 1])
-                  elif 5 and 7 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 100, 1, 1, 1, 1, 1, 1])
-                  elif 5 and 9 in player_x:
-                     hard_answer = rand.choices(hard_positions, [100, 1, 1, 1, 1, 1, 1, 1, 1])
-                  elif 1 and 3 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 100, 1, 1, 1, 1, 1, 1, 1])
-                  elif 1 and 7 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 100, 1, 1, 1, 1, 1])
-                  elif 3 and 9 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 100, 1, 1, 1])
-                  elif 2 and 8 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 100, 1, 1, 1, 1])
-                  elif 4 and 6 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 100, 1, 1, 1, 1])
-                  elif 7 and 9 in player_x:
-                     hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 1, 100, 1])
-            # 4 positions left
-               elif len(positions) == 4:
-                  hard_answer = rand.choices(hard_positions, [ 5, 10,  5, 10,  0, 10,  5, 10,  5])
-            # 2 positions left
-               elif len(positions) == 2:
-                  hard_answer = rand.choices(hard_positions, [ 5,  5,  5,  5,  5,  5,  5,  5,  5])
-
-               answer = hard_answer[0]
-               if answer in positions:
-                  positions.remove(answer)
-                  player_o.append(answer)
-                  Box(answer, "O")
-                  time.sleep(1)
-                  print(f"Bot has picked {answer}.")
-                  time.sleep(2)
-                  os.system("cls")
-                  print(f"{a}\n{b}\n{c}\n{d}\n{f}\n{g}\n{h}\n{i}\n{j}\n{k}\n{m}\n{n}\n{p}\n{q}\n{r}\n{s}")
-                  
-
-            # Score keeper checking Bots winning combinations vs score.
-               set_o = set(player_o)
-               for lists in winners:
-                  value = set(lists)
-                  if value.issubset(set_o):
-                     print("It's alright to pick flowers instead of playing this hard game!")
-                     positions.clear()
-                     print("Restarting the game for glitch free gaming in: ")
-                     time.sleep(1)
-                     print("3")
-                     time.sleep(1)
-                     print("2")
-                     time.sleep(1)
-                     print("1")
-                     time.sleep(1)
-         if len(positions) == 0 and len(player_x) + len(player_o) == 9:
-            print("You have a DRAW\n Game restarting in:")
-            time.sleep(1)
-            print("3")
-            time.sleep(1)
-            print("2")
-            time.sleep(1)
-            print("1")
-            time.sleep(1)  
-      # Loop exit code
-      elif game_mode == "X":
-         break
-      else:
-         os.system("cls")
-         exit = print("Please enter a value between 1, 2 or 3!")
+         print("\n Please choose a correct game mode!")
          time.sleep(2)
-   except:
-      print("Please enter values between 1-9 to pick boxes!\n Restarting the game for glitch free gaming in: ")
-      time.sleep(1)
-      print("3")
-      time.sleep(1)
-      print("2")
-      time.sleep(1)
-      print("1")
-      time.sleep(1)  
+         os.system("cls")
+      elif str(game_mode_var) in game_mode_options:
+         game_mode = str(game_mode_var)
+         fresh_grid()
+         # 2 player mode
+         if game_mode == "1":
+            while len(positions) > 0:
+            # Player 1 picking
+               if len(player_x) <= len(player_o):
+                  answer_str = input("Player X please choose a box to occupy: ")
+                  if answer_str not in str_positions:
+                     print("Please enter valid numbers only!")
+                     time.sleep(1)
+                     fresh_grid()
+                  elif int(answer_str) in positions:
+                     answer_int = int(answer_str)
+                     positions.remove(answer_int)
+                     player_x.append(answer_int)
+                     Box(answer_int, "X")
+                     fresh_grid()
+                  else:
+                     print("Number has already been taken: ")
+                     time.sleep(1)
+                     fresh_grid()
+
+               # Score keeper checking X players winning combinations vs score.
+                  set_x = set(player_x)
+                  for lists in winners:
+                     value = set(lists)
+                     if value.issubset(set_x):
+                        print("Player X has won!")
+                        positions.clear()
+                        print("Entering Game menu in: ")
+                        time.sleep(1)
+                        print("3")
+                        time.sleep(1)
+                        print("2")
+                        time.sleep(1)
+                        print("1")
+                        time.sleep(1)
+
+            # Player 2 picking
+               elif len(player_x) > len(player_o):
+                  answer_str = input("Player O please choose a box to occupy: ")
+                  if answer_str not in str_positions:
+                     print("Please enter valid numbers only!")
+                     time.sleep(1)
+                     fresh_grid()
+                  elif int(answer_str) in positions:
+                     answer_int = int(answer_str)
+                     positions.remove(answer_int)
+                     player_o.append(answer_int)
+                     Box(answer_int, "O")
+                     fresh_grid()
+                  elif answer_int not in hard_positions:
+                     print("Please enter valid numbers only!")
+                  else:
+                     print("Number has already been taken: ")
+                     time.sleep(1)
+                     fresh_grid()
+
+               # Score keeper checking O players winning combinations vs score.
+                  set_o = set(player_o)
+                  for lists in winners:
+                     value = set(lists)
+                     if value.issubset(set_o):
+                        print("Player O has won!")
+                        positions.clear()
+                        print("Entering Game menu in: ")
+                        time.sleep(1)
+                        print("3")
+                        time.sleep(1)
+                        print("2")
+                        time.sleep(1)
+                        print("1")
+                        time.sleep(1) 
+
+            if len(positions) == 0 and len(player_x) + len(player_o) == 9:
+               print("You have a DRAW\n Entering Game menu in: ")
+               time.sleep(1)
+               print("3")
+               time.sleep(1)
+               print("2")
+               time.sleep(1)
+               print("1")
+               time.sleep(1)     
+         # Player 1 vs  bot mode.
+         elif game_mode == "2":
+            while len(positions) > 0:
+            # X player picking
+               if len(player_x) <= len(player_o):
+                  answer_str = input("Human, please choose a box to occupy: ")
+                  if answer_str not in str_positions:
+                     print("Please enter valid numbers only!")
+                     time.sleep(1)
+                     os.system()
+                  elif int(answer_str) in positions:
+                     answer_int = int(answer_str)
+                     positions.remove(answer_int)
+                     player_x.append(answer_int)
+                     Box(answer_int, "X")
+                     fresh_grid()
+                  elif answer_int not in hard_positions:
+                     print("Please enter valid numbers only!")
+                  else:
+                     print("Number has already been taken: ")
+
+               # Score keeper checking X players winning combinations vs score.
+                  set_x = set(player_x)
+                  for lists in winners:
+                     value = set(lists)
+                     if value.issubset(set_x):
+                        print("Human, u have won against the machines!\n")
+                        positions.clear()
+                        print("Entering Game menu in: ")
+                        time.sleep(1)
+                        print("3")
+                        time.sleep(1)
+                        print("2")
+                        time.sleep(1)
+                        print("1")
+                        time.sleep(1)  
+
+            # Bot picking
+               elif len(player_x) > len(player_o):
+                  answer = rand.randint(1, 9)
+                  
+                  if answer in positions:
+                     positions.remove(answer)
+                     player_o.append(answer)
+                     Box(answer, "O")
+                     time.sleep(1)
+                     print(f"Bot has picked {answer}.")
+                     time.sleep(2)
+                     fresh_grid()
+
+               # Score keeper checking Bots winning combinations vs score.
+                  set_o = set(player_o)
+                  for lists in winners:
+                     value = set(lists)
+                     if value.issubset(set_o):
+                        print("Matrix has won, time for the blue pill!")
+                        positions.clear()
+                        print("Entering Game menu in: ")
+                        time.sleep(1)
+                        print("3")
+                        time.sleep(1)
+                        print("2")
+                        time.sleep(1)
+                        print("1")
+                        time.sleep(1)
+            if len(positions) == 0 and len(player_x) + len(player_o) == 9:
+               print("You have a DRAW\n Entering Game menu in:")
+               time.sleep(1)
+               print("3")
+               time.sleep(1)
+               print("2")
+               time.sleep(1)
+               print("1")
+               time.sleep(1)      
+         # Player 1 vs stronger bot
+         elif game_mode == "3":
+            while len(positions) > 0:
+            # X player picking
+               if len(player_x) <= len(player_o):
+                  answer_str = input("Human, please choose a box to occupy: ")
+                  if answer_str not in str_positions:
+                     print("Please enter valid numbers only!")
+                  elif int(answer_str) in positions:
+                     answer_int = int(answer_str)
+                     positions.remove(answer_int)
+                     player_x.append(answer_int)
+                     Box(answer_int, "X")
+                     fresh_grid()
+                  elif answer_int not in hard_positions:
+                     print("Please enter valid numbers only!")
+                  else:
+                     print("Number has already been taken: ")
+
+               # Score keeper checking X players winning combinations vs score.
+                  set_x = set(player_x)
+                  for lists in winners:
+                     value = set(lists)
+                     if value.issubset(set_x):
+                        print("Human, u have won against the machines!\n")
+                        positions.clear()
+                        print("Entering Game menu in: ")
+                        time.sleep(1)
+                        print("3")
+                        time.sleep(1)
+                        print("2")
+                        time.sleep(1)
+                        print("1")
+                        time.sleep(1)  
+
+            # Bot picking
+               elif len(player_x) > len(player_o):
+               # 8 positions left   
+                  if len(positions) == 8:
+                     if 5 not in positions:
+                        hard_answer = rand.choices(hard_positions, [100,  1, 100,  1,  1,  1, 100,  1, 100])
+                     else:
+                        hard_answer = rand.choices(hard_positions, [20, 1, 20, 1, 100, 1, 20, 1, 20])
+               # 6 positions left
+                  elif len(positions) == 6:
+                     # implemented counters: 5-1, 5-3, 5-7, 5-9, 1-3, 1-7, 3-9, 2-8, 4-6, 7-9
+                     # available counters: 1-2, 2-3, 4-5, 5-6, 7-8, 8-9, 1-4, 4-7, 2-5, 5-8, 3-6, 6-9, 1-9, 3-7
+                     if 5 and 1 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 1, 1, 100])
+                     elif 5 and 3 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 100, 1, 1])
+                     elif 5 and 7 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 100, 1, 1, 1, 1, 1, 1])
+                     elif 5 and 9 in player_x:
+                        hard_answer = rand.choices(hard_positions, [100, 1, 1, 1, 1, 1, 1, 1, 1])
+                     elif 1 and 3 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 100, 1, 1, 1, 1, 1, 1, 1])
+                     elif 1 and 7 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 100, 1, 1, 1, 1, 1])
+                     elif 3 and 9 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 100, 1, 1, 1])
+                     elif 2 and 8 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 100, 1, 1, 1, 1])
+                     elif 4 and 6 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 100, 1, 1, 1, 1])
+                     elif 7 and 9 in player_x:
+                        hard_answer = rand.choices(hard_positions, [1, 1, 1, 1, 1, 1, 1, 100, 1])
+               # 4 positions left
+                  elif len(positions) == 4:
+                     hard_answer = rand.choices(hard_positions, [ 5, 10,  5, 10,  0, 10,  5, 10,  5])
+               # 2 positions left
+                  elif len(positions) == 2:
+                     hard_answer = rand.choices(hard_positions, [ 5,  5,  5,  5,  5,  5,  5,  5,  5])
+               # Bot answer
+                  answer = hard_answer[0]
+                  if answer in positions:
+                     positions.remove(answer)
+                     player_o.append(answer)
+                     Box(answer, "O")
+                     time.sleep(1)
+                     print(f"Bot has picked {answer}.")
+                     time.sleep(2)
+                     fresh_grid()
+                     
+
+               # Score keeper checking Bots winning combinations vs score.
+                  set_o = set(player_o)
+                  for lists in winners:
+                     value = set(lists)
+                     if value.issubset(set_o):
+                        print("It's alright to pick flowers instead of playing this hard game!")
+                        positions.clear()
+                        print("Entering Game menu in: ")
+                        time.sleep(1)
+                        print("3")
+                        time.sleep(1)
+                        print("2")
+                        time.sleep(1)
+                        print("1")
+                        time.sleep(1)
+            if len(positions) == 0 and len(player_x) + len(player_o) == 9:
+               print("You have a DRAW\n Entering Game menu in:")
+               time.sleep(1)
+               print("3")
+               time.sleep(1)
+               print("2")
+               time.sleep(1)
+               print("1")
+               time.sleep(1)  
+         # Loop exit code
+         elif game_mode == "X":
+            os.system("cls")
+            print("Thanks for trying out the game!")
+            time.sleep(3)
+            os.system("cls")
+            print("Unloading variables...")
+            time.sleep(1)
+            os.system("cls")
+            print("Unloading variables..")
+            time.sleep(1)
+            os.system("cls")
+            print("Unloading variables.")
+            time.sleep(1)
+            os.system("cls")
+            print("Closing the game...")
+            time.sleep(1)
+            os.system("cls")
+            print("Closing the game..")
+            time.sleep(1)
+            os.system("cls")
+            print("Closing the game.")
+            time.sleep(1)
+            os.system("cls")
+            break
+except:
+   print("Please enter values between 1-9 to pick boxes!\n Restarting the game for glitch free gaming in: ")
+   time.sleep(1)
+   print("3")
+   time.sleep(1)
+   print("2")
+   time.sleep(1)
+   print("1")
+   time.sleep(1)  
