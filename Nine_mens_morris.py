@@ -109,21 +109,37 @@ v = "│   │ 22├───────────────────┤
 w = "│   └───┘                   └───┘                   └───┘   │"
 w1= "└───────────────────────────────────────────────────────────┘"
 
+##################################################################################################################
 
 def grid_move():
-    num = 0
-    for _ in range(61):
-        num += 1
-        os.system("cls")
-        print(f"{a3[:num]}\n{a2[:num]}\n{a1[:num]}\n{a[:num]}\n{b[:num]}\n{c[:num]}\n{d[:num]}\n{e[:num]}\
-            \n{f[:num]}\n{g[:num]}\n{h[:num]}\n{j[:num]}\n{k[:num]}\n{m[:num]}\n{n[:num]}\n{p[:num]}\
-            \n{q[:num]}\n{r[:num]}\n{s[:num]}\n{t[:num]}\n{u[:num]}\n{v[:num]}\n{w[:num]}\n{w1[:num]}")
+   os.system("cls")
+   num = 0
+   for _ in range(61):
+      num += 1
+      print(f"{a3[:num]})
+   for _ in range(61):
+      num +=1
+      print(f"{a2[:num]})
+   for _ in range(61):
+      num +=1
+      print(f"{a1[:num]})
+
+
+
+      #   \n{a2[:num]}\n{a1[:num]}\n{a[:num]}\n{b[:num]}\n{c[:num]}\n{d[:num]}\n{e[:num]}\
+      #       \n{f[:num]}\n{g[:num]}\n{h[:num]}\n{j[:num]}\n{k[:num]}\n{m[:num]}\n{n[:num]}\n{p[:num]}\
+      #       \n{q[:num]}\n{r[:num]}\n{s[:num]}\n{t[:num]}\n{u[:num]}\n{v[:num]}\n{w[:num]}\n{w1[:num]}")
+
+
+##################################################################################################################
+
 def grid_refresh():
     os.system("cls")
     print(f"{a3}\n{a2}\n{a1}\n{a}\n{b}\n{c}\n{d}\n{e}\
     \n{f}\n{g}\n{h}\n{j}\n{k}\n{m}\n{n}\n{p}\
     \n{q}\n{r}\n{s}\n{t}\n{u}\n{v}\n{w}\n{w1}")
 
+##################################################################################################################
 while True:
    os.system("cls")
    print("""
@@ -144,7 +160,11 @@ while True:
    game_mode = input()
 
    if game_mode == "X":
+      os.system("cls")
       break
+   elif game_mode == "1":
+      grid_refresh()
+      time.sleep(3)
    elif game_mode == "3":
       os.system("cls")
       print(rules)
