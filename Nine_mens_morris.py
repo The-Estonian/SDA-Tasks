@@ -112,24 +112,14 @@ w1= "└────────────────────────
 ##################################################################################################################
 
 def grid_move():
-   os.system("cls")
-   num = 0
-   for _ in range(61):
-      num += 1
-      print(f"{a3[:num]})
-   for _ in range(61):
-      num +=1
-      print(f"{a2[:num]})
-   for _ in range(61):
-      num +=1
-      print(f"{a1[:num]})
-
-
-
-      #   \n{a2[:num]}\n{a1[:num]}\n{a[:num]}\n{b[:num]}\n{c[:num]}\n{d[:num]}\n{e[:num]}\
-      #       \n{f[:num]}\n{g[:num]}\n{h[:num]}\n{j[:num]}\n{k[:num]}\n{m[:num]}\n{n[:num]}\n{p[:num]}\
-      #       \n{q[:num]}\n{r[:num]}\n{s[:num]}\n{t[:num]}\n{u[:num]}\n{v[:num]}\n{w[:num]}\n{w1[:num]}")
-
+    num = 0
+    for _ in range(61):
+        num += 1
+        os.system("cls")
+        print(f"{a3[:num]}\n{a2[:num]}\n{a1[:num]}\n{a[:num]}\n{b[:num]}\n{c[:num]}\n{d[:num]}\n{e[:num]}\
+            \n{f[:num]}\n{g[:num]}\n{h[:num]}\n{j[:num]}\n{k[:num]}\n{m[:num]}\n{n[:num]}\n{p[:num]}\
+            \n{q[:num]}\n{r[:num]}\n{s[:num]}\n{t[:num]}\n{u[:num]}\n{v[:num]}\n{w[:num]}\n{w1[:num]}")
+            
 
 ##################################################################################################################
 
