@@ -1,6 +1,8 @@
 import os
 import time
 import random as rand
+import sys
+import threading
 
 
 #              0123456789          0123456789          0123456789
@@ -73,7 +75,8 @@ def grid_on():
             \n{k[grid_index["key_k"]:]}\n{m[grid_index["key_m"]:]}\n{n[grid_index["key_n"]:]}\n{p[grid_index["key_p"]:]}\
             \n{q[grid_index["key_q"]:]}\n{r[grid_index["key_r"]:]}\n{s[grid_index["key_s"]:]}\n{t[grid_index["key_t"]:]}\
             \n{u[grid_index["key_u"]:]}\n{v[grid_index["key_v"]:]}\n{w[grid_index["key_w"]:]}\n{w1[grid_index["key_w1"]:]}""")
-    
+        time.sleep(0.02)
+        
 def grid_off():
     os.system("cls")
     grid_index = {
@@ -113,8 +116,14 @@ def grid_off():
                 \n{k[grid_index["key_k"]:]}\n{m[grid_index["key_m"]:]}\n{n[grid_index["key_n"]:]}\n{p[grid_index["key_p"]:]}\
                 \n{q[grid_index["key_q"]:]}\n{r[grid_index["key_r"]:]}\n{s[grid_index["key_s"]:]}\n{t[grid_index["key_t"]:]}\
                 \n{u[grid_index["key_u"]:]}\n{v[grid_index["key_v"]:]}\n{w[grid_index["key_w"]:]}\n{w1[grid_index["key_w1"]:]}""")
-            #time.sleep(0.05)
-grid_on()
-time.sleep(0.5)
-grid_off()
+            #time.sleep(0.02)
+
+# sys.stdout.flush()
+# thread = threading.Thread(target = grid_on)
+# thread = threading.Thread(target = grid_off)
+# thread.start()
+#sys.stdout.flush()
+while True:
+    grid_on()
+    grid_off()
 
