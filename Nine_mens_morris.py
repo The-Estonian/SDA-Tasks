@@ -112,18 +112,11 @@ w1= "└────────────────────────
 ##################################################################################################################
 
 class Grid:
-   def __init__(self, var):
+   def __init__(self):
       self.grid_on()
-      self.grid_off()
-      if var == "both":
-         self.grid_on()
-         self.grid_off()
-      elif var == "on":
-         self.grid_on()
-      elif var == "off":
-         self.grid_off()
+      self.grid_off()   
 
-   def grid_on():
+   def grid_on(self):
       os.system("cls")
       grid_index = {
          "key_a3" : 61,
@@ -164,7 +157,8 @@ class Grid:
                \n{q[grid_index["key_q"]:]}\n{r[grid_index["key_r"]:]}\n{s[grid_index["key_s"]:]}\n{t[grid_index["key_t"]:]}\
                \n{u[grid_index["key_u"]:]}\n{v[grid_index["key_v"]:]}\n{w[grid_index["key_w"]:]}\n{w1[grid_index["key_w1"]:]}""")
 
-   def grid_off():
+   def grid_off(self):
+
       os.system("cls")
       grid_index = {
          "key_a3" : 61,
@@ -195,15 +189,17 @@ class Grid:
          for key, value in grid_index.items():
                if value > 0:
                   grid_index[key] += 5
-               elif value <0:
-                  grid_index[key] = 0
          os.system("cls")  
-         print(f"""{a3[grid_index["key_a3"]:]}\n{a2[grid_index["key_a2"]:]}\n{a1[grid_index["key_a1"]:]}\n{a[grid_index["key_a"]:]}\
+         print(f"""{a3[:grid_index["key_a3"]]}\n{a2[grid_index["key_a2"]:]}\n{a1[grid_index["key_a1"]:]}\n{a[grid_index["key_a"]:]}\
                \n{b[grid_index["key_b"]:]}\n{c[grid_index["key_c"]:]}\n{d[grid_index["key_d"]:]}\n{e[grid_index["key_e"]:]}\
                \n{f[grid_index["key_f"]:]}\n{g[grid_index["key_g"]:]}\n{h[grid_index["key_h"]:]}\n{j[grid_index["key_j"]:]}\
                \n{k[grid_index["key_k"]:]}\n{m[grid_index["key_m"]:]}\n{n[grid_index["key_n"]:]}\n{p[grid_index["key_p"]:]}\
                \n{q[grid_index["key_q"]:]}\n{r[grid_index["key_r"]:]}\n{s[grid_index["key_s"]:]}\n{t[grid_index["key_t"]:]}\
                \n{u[grid_index["key_u"]:]}\n{v[grid_index["key_v"]:]}\n{w[grid_index["key_w"]:]}\n{w1[grid_index["key_w1"]:]}""")
+
+   def both(self):
+      self.grid_on()
+      self.grid_off()
 
 ##################################################################################################################
 
@@ -232,12 +228,12 @@ while True:
    └───────────────────────────┘
                      """, end='\033[F\033[A   │ Pick your morris: ')
    game_mode = input()
-
+   grid = Grid()
    if game_mode == "X":
       os.system("cls")
       break
    elif game_mode == "1":
-      Grid("on")
+      grid.both()
       time.sleep(1)
    elif game_mode == "3":
       os.system("cls")
