@@ -69,8 +69,8 @@ icon_5 = "🟣"
 icon_6 = "🟤"
 icon_7 = "🔵"
 
-player_1_icon = "🔴"
-player_2_icon = "🟡"
+# player_1_icon = "1"
+# player_2_icon = "2"
 
 class Box():
 
@@ -126,7 +126,7 @@ class Box():
       elif self.box_num == 24:
          self.box_24()          
 
-   # 1st box function to switch - done
+   # 1st box function to switch
    def box_1(self):
       global a
       empty = " 1 "
@@ -138,50 +138,78 @@ class Box():
       elif self.player == "empty":
          reserv_spot = empty
       a = a[0:5] + reserv_spot + a[7:]
-
-
-   # 2nd box function to switch
+   # 2nd box function to switch 
    def box_2(self):
       global a
+      empty = " 1 "
+      reserv_spot = "1"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      a = a[0:28] + reserv_spot + a[30:]
    # 3rd box function to switch
    def box_3(self):
       global a
+      empty = " 1 "
+      reserv_spot = "1"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      a = a[0:51] + reserv_spot + a[53:]
    # 4th box function to switch
    def box_4(self):
-      global a
+      global d
+      empty = " 1 "
+      reserv_spot = "1"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      d = d[0:13] + reserv_spot + d[15:]
    # 5th box function to switch
    def box_5(self):
-      global a
+      global d
+      empty = " 1 "
+      reserv_spot = "1"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      d = d[0:28] + reserv_spot + d[30:]
    # 6th box function to switch
    def box_6(self):
-      global a
+      global d
+      empty = " 1 "
+      reserv_spot = "1"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
-   # 7th box function to switch
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      d = d[0:43] + reserv_spot + d[45:]
+   # 7th box function to switch - done
    def box_7(self):
-      global a
+      global g
+      empty = " 1 "
+      reserv_spot = "1"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      g = g[0:21] + reserv_spot + g[23:]
    # 8th box function to switch
    def box_8(self):
       global a
@@ -245,7 +273,7 @@ class Box():
          a = a[0:5] + a10 + a[8:]
       if self.player == "2":
          a = a[0:5] + a11 + a[8:]
-   # 17 box function to switch
+   # 17th box function to switch
    def box_17(self):
       global a
       if self.player == "1":
@@ -436,11 +464,25 @@ def grid_refresh():
 ##################################################################################################################
 allocatable_numbers = ["1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9", "10", "11", "12",\
                       "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+player_icon_color = ["1", "2", "3", "4", "5", "6", "7"]
+hard_icon_colors = ["1", "2", "3", "4", "5", "6", "7"]
 player_1 = []
 player_2 = []
 
 while True:
    os.system("cls")
+
+      
+   icon_1 = "🔴"
+   icon_2 = "🔵"
+   icon_3 = "🟠" 
+   icon_4 = "🟡"
+   icon_5 = "🟢"
+   icon_6 = "🟣"
+   icon_7 = "🟤"
+
+   player_1_icon = None
+   player_2_icon = None
 
    # Game options
    print("""
@@ -466,20 +508,141 @@ while True:
       break
    # Option 1 - Player vs Player
    elif game_mode == "1":
+      while True:
+         os.system("cls")
+         print("""   
+      ┌───────────────────────────┐
+      │   🔴 🔵 🟠 🟡 🟢 🟣 🟤    │
+      │───────────────────────────│
+      │    1  2  3  4  5  6  7    │
+      │───────────────────────────│ 
+      │                           │
+      └───────────────────────────┘
+                        """, end='\033[F\033[A      │ Player 1 color: ')
+         player_1_pick = str(input())
+         if player_1_pick in player_icon_color:
+            if player_1_pick == "1":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_1
+               break
+            elif player_1_pick == "2":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_2
+               break
+            elif player_1_pick == "3":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_3
+               break
+            elif player_1_pick == "4":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_4
+               break
+            elif player_1_pick == "5":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_5
+               break
+            elif player_1_pick == "6":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_6
+               break
+            elif player_1_pick == "7":
+               player_icon_color.remove(player_1_pick)
+               player_1_icon = icon_7
+               break
+            else:
+               print("Please pick a valid color!")
+               time.sleep(1)
+         else:
+            print("\n    Please enter a valid color number!")
+            time.sleep(1)
+      
+      while True:
+         os.system("cls")            
+         print("""   
+      ┌───────────────────────────┐
+      │   🔴 🔵 🟠 🟡 🟢 🟣 🟤    │
+      │───────────────────────────│
+      │    1  2  3  4  5  6  7    │
+      │───────────────────────────│ 
+      │                           │
+      └───────────────────────────┘
+                        """, end='\033[F\033[A      │ Player 2 color: ')
+         player_2_pick = str(input())
+         if player_2_pick in hard_icon_colors:
+            if player_2_pick in player_icon_color:
+               if player_2_pick == "1":
+                  player_2_icon = icon_1
+                  break
+               elif player_2_pick == "2":
+                  player_2_icon = icon_2
+                  break
+               elif player_2_pick == "3":
+                  player_2_icon = icon_3
+                  break 
+               elif player_2_pick == "4":
+                  player_2_icon = icon_4
+                  break 
+               elif player_2_pick == "5":
+                  player_2_icon = icon_5
+                  break
+               elif player_2_pick == "6":
+                  player_2_icon = icon_6
+                  break
+               elif player_2_pick == "7":
+                  player_2_icon = icon_7
+                  break
+            else:
+               print("\n  Color already taken, please pick another!")
+               time.sleep(1)
+         else:
+            print("\n    Please enter a valid color number!")
+            time.sleep(1)
+
       Grid("on")
       while len(allocatable_numbers) > 0: 
          picking_variable = str(input("Please pick a box: "))
          if picking_variable in allocatable_numbers:
-            if picking_variable == "1":
-               Box(1, "1")
+            if picking_variable == "4":
+               Box(4, "1")
                player_1.append(picking_variable)
                grid_refresh()
-            elif picking_variable == "2":
-               Box(1, "2")
+            elif picking_variable == "5":
+               Box(5, "1")
                player_2.append(picking_variable)
                grid_refresh()
-            elif picking_variable == "3":
+            elif picking_variable == "6":
+               Box(6, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "7":
+               Box(7, "1")
+               player_2.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "c":
                Box(1, "empty")
+               Box(2, "empty")
+               Box(3, "empty")
+               Box(4, "empty")
+               Box(5, "empty")
+               Box(6, "empty")
+               Box(7, "empty")
+               Box(8, "empty")
+               Box(9, "empty")
+               Box(10, "empty")
+               Box(11, "empty")
+               Box(12, "empty")
+               Box(13, "empty")
+               Box(14, "empty")
+               Box(15, "empty")
+               Box(16, "empty")
+               Box(17, "empty")
+               Box(18, "empty")
+               Box(19, "empty")
+               Box(20, "empty")
+               Box(21, "empty")
+               Box(22, "empty")
+               Box(23, "empty")
+               Box(24, "empty")
                grid_refresh()
             time.sleep(1)
          else:
@@ -505,7 +668,7 @@ while True:
    # Random text warning
    else:
       print("\n     Please enter a valid mode")
-      time.sleep(0.5)
+      time.sleep(1)
 
 
 
