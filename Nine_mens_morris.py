@@ -60,14 +60,15 @@ rules = """
 """
 import os
 import time
+import codecs
 
-icon_1 = " 🔴 "
-icon_2 = " 🟡 "
-icon_3 = "🟠" 
-icon_4 = "🟢"
-icon_5 = "🟣"
-icon_6 = "🟤"
-icon_7 = "🔵"
+# icon_1 = "🔴"
+# icon_2 = "🟡"
+# icon_3 = "🟠" 
+# icon_4 = "🟢"
+# icon_5 = "🟣"
+# icon_6 = "🟤"
+# icon_7 = "🔵"
 
 # player_1_icon = "1"
 # player_2_icon = "2"
@@ -129,44 +130,48 @@ class Box():
    # 1st box function to switch
    def box_1(self):
       global a
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 🟤"
+      reserv_spot = empty
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
          reserv_spot = player_2_icon
-      elif self.player == "empty":
-         reserv_spot = empty
-      a = a[0:5] + reserv_spot + a[7:]
+      # elif self.player == "empty":
+      #    if reserv_spot == player_1_icon or player_2_icon:
+      #       reserv_spot = empty + "2"
+      #    else:
+      #       reserv_spot = empty
+      a = a[0:5] + reserv_spot  + a[8:]
    # 2nd box function to switch 
    def box_2(self):
       global a
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 🟤"
+      reserv_spot = empty
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
          reserv_spot = player_2_icon
-      elif self.player == "empty":
-         reserv_spot = empty
-      a = a[0:28] + reserv_spot + a[30:]
+      # elif self.player == "empty":
+      #    if reserv_spot == player_1_icon or player_2_icon:
+      #       reserv_spot = empty + "2"
+      #    else:
+      #       reserv_spot = empty
+      a = a[0:29] + reserv_spot + a[32:]
    # 3rd box function to switch
    def box_3(self):
       global a
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 3"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
          reserv_spot = player_2_icon
       elif self.player == "empty":
          reserv_spot = empty
-      a = a[0:51] + reserv_spot + a[53:]
+      a = a[0:52] + reserv_spot + a[54:]
    # 4th box function to switch
    def box_4(self):
       global d
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 4"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -177,8 +182,7 @@ class Box():
    # 5th box function to switch
    def box_5(self):
       global d
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 5"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -189,8 +193,7 @@ class Box():
    # 6th box function to switch
    def box_6(self):
       global d
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 6"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -201,8 +204,7 @@ class Box():
    # 7th box function to switch
    def box_7(self):
       global g
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 7"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -213,8 +215,7 @@ class Box():
    # 8th box function to switch
    def box_8(self):
       global g
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 8"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -225,8 +226,7 @@ class Box():
    # 9th box function to switch
    def box_9(self):
       global g
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = " 9"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -237,8 +237,7 @@ class Box():
    # 10th box function to switch
    def box_10(self):
       global k
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = "10"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -249,8 +248,7 @@ class Box():
    # 11th box function to switch
    def box_11(self):
       global k
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = "11"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -261,8 +259,7 @@ class Box():
    # 12th box function to switch
    def box_12(self):
       global k
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = "12"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -273,8 +270,7 @@ class Box():
    # 13th box function to switch
    def box_13(self):
       global k
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = "13"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -285,8 +281,7 @@ class Box():
    # 14th box function to switch
    def box_14(self):
       global k
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = "14"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -294,11 +289,10 @@ class Box():
       elif self.player == "empty":
          reserv_spot = empty
       k = k[0:44] + reserv_spot + k[46:]
-   # 15th box function to switch - done
+   # 15th box function to switch
    def box_15(self):
       global k
-      empty = " 1 "
-      reserv_spot = "1"
+      empty = "15"
       if self.player == "1":
          reserv_spot = player_1_icon
       elif self.player == "2":
@@ -308,67 +302,103 @@ class Box():
       k = k[0:51] + reserv_spot + k[53:]
    # 16th box function to switch
    def box_16(self):
-      global a
+      global p
+      empty = "16"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      p = p[0:21] + reserv_spot + p[23:]
    # 17th box function to switch
    def box_17(self):
-      global a
+      global p
+      empty = "17"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      p = p[0:28] + reserv_spot + p[30:]
    # 18th box function to switch
    def box_18(self):
-      global a
+      global p
+      empty = "18"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      p = p[0:35] + reserv_spot + p[37:]
    # 19th box function to switch
    def box_19(self):
-      global a
+      global s
+      empty = "19"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      s = s[0:13] + reserv_spot + s[15:]
    # 20th box function to switch
    def box_20(self):
-      global a
+      global s
+      empty = "20"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      s = s[0:28] + reserv_spot + s[30:]
    # 21st box function to switch
    def box_21(self):
-      global a
+      global s
+      empty = "21"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      s = s[0:43] + reserv_spot + s[45:]
    # 22nd box function to switch
    def box_22(self):
-      global a
+      global v
+      empty = "22"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      v = v[0:5] + reserv_spot + v[7:]
    # 23rd box function to switch
    def box_23(self):
-      global a
+      global v
+      empty = "23"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      v = v[0:28] + reserv_spot + v[30:]
    # 24th box function to switch
    def box_24(self):
-      global a
+      global v
+      empty = "24"
       if self.player == "1":
-         a = a[0:5] + a10 + a[8:]
-      if self.player == "2":
-         a = a[0:5] + a11 + a[8:]
+         reserv_spot = player_1_icon
+      elif self.player == "2":
+         reserv_spot = player_2_icon
+      elif self.player == "empty":
+         reserv_spot = empty
+      v = v[0:51] + reserv_spot + v[53:]
 
 
 #              0123456789          0123456789          0123456789
@@ -388,13 +418,13 @@ j = "│   ┌─┴─┐   ┌─┴─┐   ┌─┴─┐           ┌─�
 k = "│   │10 ├───┤11 ├───┤12 │           │13 ├───┤14 ├───┤15 │   │"
 m = "│   └─┬─┘   └─┬─┘   └─┬─┘           └─┬─┘   └─┬─┘   └─┬─┘   │"
 n = "│     │       │     ┌─┴─┐   ┌───┐   ┌─┴─┐     │       │     │"
-p = "│     │       │     │ 16├───┤ 17├───┤ 18│     │       │     │"
+p = "│     │       │     │16 ├───┤17 ├───┤18 │     │       │     │"
 q = "│     │       │     └───┘   └─┬─┘   └───┘     │       │     │"
 r = "│     │     ┌─┴─┐           ┌─┴─┐           ┌─┴─┐     │     │"
-s = "│     │     │ 19├───────────┤ 20├───────────┤ 21│     │     │"
+s = "│     │     │19 ├───────────┤20 ├───────────┤21 │     │     │"
 t = "│     │     └───┘           └─┬─┘           └───┘     │     │"
 u = "│   ┌─┴─┐                   ┌─┴─┐                   ┌─┴─┐   │"
-v = "│   │ 22├───────────────────┤ 23├───────────────────┤ 24│   │"
+v = "│   │22 ├───────────────────┤23 ├───────────────────┤24 │   │"
 w = "│   └───┘                   └───┘                   └───┘   │"
 w1= "└───────────────────────────────────────────────────────────┘"
 
@@ -503,7 +533,7 @@ def grid_refresh():
 
 ##################################################################################################################
 allocatable_numbers = ["1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9", "10", "11", "12",\
-                      "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+                      "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "C"]
 player_icon_color = ["1", "2", "3", "4", "5", "6", "7"]
 hard_icon_colors = ["1", "2", "3", "4", "5", "6", "7"]
 player_1 = []
@@ -513,13 +543,13 @@ while True:
    os.system("cls")
 
       
-   icon_1 = "🔴"
-   icon_2 = "🔵"
-   icon_3 = "🟠" 
-   icon_4 = "🟡"
-   icon_5 = "🟢"
-   icon_6 = "🟣"
-   icon_7 = "🟤"
+   icon_1 = " 🔴"
+   icon_2 = " 🔵"
+   icon_3 = " 🟠" 
+   icon_4 = " 🟡"
+   icon_5 = " 🟢"
+   icon_6 = " 🟣"
+   icon_7 = " 🟤"
 
    player_1_icon = None
    player_2_icon = None
@@ -646,9 +676,53 @@ while True:
                Box(1, "1")
                player_1.append(picking_variable)
                grid_refresh()
+            elif picking_variable == "2":
+               Box(2, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "3":
+               Box(3, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "4":
+               Box(4, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "5":
+               Box(5, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "6":
+               Box(6, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "7":
+               Box(7, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "8":
+               Box(8, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "9":
+               Box(9, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "10":
+               Box(10, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "11":
+               Box(11, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "12":
+               Box(12, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
             elif picking_variable == "13":
                Box(13, "1")
-               player_2.append(picking_variable)
+               player_1.append(picking_variable)
                grid_refresh()
             elif picking_variable == "14":
                Box(14, "1")
@@ -656,9 +730,45 @@ while True:
                grid_refresh()
             elif picking_variable == "15":
                Box(15, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "16":
+               Box(16, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "17":
+               Box(17, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "18":
+               Box(18, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "19":
+               Box(19, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "20":
+               Box(20, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "21":
+               Box(21, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "22":
+               Box(22, "1")
                player_2.append(picking_variable)
                grid_refresh()
+            elif picking_variable == "23":
+               Box(23, "1")
+               player_1.append(picking_variable)
+               grid_refresh()
             elif picking_variable == "24":
+               Box(24, "1")
+               player_2.append(picking_variable)
+               grid_refresh()
+            elif picking_variable == "C":
                Box(1, "empty")
                Box(2, "empty")
                Box(3, "empty")
