@@ -421,7 +421,7 @@ f = "│     │       │     ┌───┐   ┌─┴─┐   ┌───�
 g = "│     │       │     │ 7 ├───┤ 8 ├───┤ 9 │     │       │     │"
 h = "│     │       │     └─┬─┘   └───┘   └─┬─┘     │       │     │"
 j = "│   ┌─┴─┐   ┌─┴─┐   ┌─┴─┐           ┌─┴─┐   ┌─┴─┐   ┌─┴─┐   │"
-k = "│   │ 10├───┤ 11├───┤ 12│           │13 ├───┤14 ├───┤15 │   │"
+k = "│   │10 ├───┤11 ├───┤12 │           │13 ├───┤14 ├───┤15 │   │"
 m = "│   └─┬─┘   └─┬─┘   └─┬─┘           └─┬─┘   └─┬─┘   └─┬─┘   │"
 n = "│     │       │     ┌─┴─┐   ┌───┐   ┌─┴─┐     │       │     │"
 p = "│     │       │     │16 ├───┤17 ├───┤18 │     │       │     │"
@@ -539,7 +539,7 @@ def grid_refresh():
 
 ##################################################################################################################
 allocatable_numbers = ["1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9", "10", "11", "12",\
-                      "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "C"]
+                      "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
 player_icon_color = ["1", "2", "3", "4", "5", "6", "7"]
 hard_icon_colors = ["1", "2", "3", "4", "5", "6", "7"]
 player_1 = []
@@ -549,13 +549,13 @@ while True:
    os.system("cls")
 
       
-   icon_1 = " ⌘"
-   icon_2 = " ⍟"
-   icon_3 = " ⎲" 
-   icon_4 = " ⌗"
-   icon_5 = " ⍉"
-   icon_6 = " ⍏"
-   icon_7 = " ⏹"
+   icon_1 = "⌘ "
+   icon_2 = "⍟ "
+   icon_3 = "⎲ " 
+   icon_4 = "⌗ "
+   icon_5 = "⍉ "
+   icon_6 = "⍏ "
+   icon_7 = "⏹ "
 
    player_1_icon = None
    player_2_icon = None
@@ -594,7 +594,7 @@ while True:
    │───────────────────────────│ 
    │                           │
    └───────────────────────────┘
-                        """, end='\033[F\033[A   │ Player 1 color: ')
+                        """, end='\033[F\033[A   │ Player 1 icon: ')
          player_1_pick = str(input())
          if player_1_pick in player_icon_color:
             if player_1_pick == "1":
@@ -629,7 +629,7 @@ while True:
                print("Please pick a valid color!")
                time.sleep(1)
          else:
-            print("\n    Please enter a valid color number!")
+            print("\n    Please enter a free icon number!")
             time.sleep(1)
       
       while True:
@@ -642,7 +642,7 @@ while True:
    │───────────────────────────│ 
    │                           │
    └───────────────────────────┘
-                        """, end='\033[F\033[A   │ Player 2 color: ')
+                        """, end='\033[F\033[A   │ Player 2 icon: ')
          player_2_pick = str(input())
          if player_2_pick in hard_icon_colors:
             if player_2_pick in player_icon_color:
@@ -671,138 +671,328 @@ while True:
                print("\n  Color already taken, please pick another!")
                time.sleep(1)
          else:
-            print("\n    Please enter a valid color number!")
+            print("\n    Please enter a free icon number!")
             time.sleep(1)
 
       Grid("on")
-      while len(allocatable_numbers) > 0: 
-         picking_variable = str(input("Please pick a box: "))
-         if picking_variable in allocatable_numbers:
-            if picking_variable == "1":
-               Box(1, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "2":
-               Box(2, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "3":
-               Box(3, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "4":
-               Box(4, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "5":
-               Box(5, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "6":
-               Box(6, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "7":
-               Box(7, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "8":
-               Box(8, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "9":
-               Box(9, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "10":
-               Box(10, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "11":
-               Box(11, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "12":
-               Box(12, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "13":
-               Box(13, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "14":
-               Box(14, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "15":
-               Box(15, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "16":
-               Box(16, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "17":
-               Box(17, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "18":
-               Box(18, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "19":
-               Box(19, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "20":
-               Box(20, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "21":
-               Box(21, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "22":
-               Box(22, "1")
-               player_2.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "23":
-               Box(23, "1")
-               player_1.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "24":
-               Box(24, "1")
-               player_2.append(picking_variable)
-               grid_refresh()
-            elif picking_variable == "C":
-               Box(1, "empty")
-               Box(2, "empty")
-               Box(3, "empty")
-               Box(4, "empty")
-               Box(5, "empty")
-               Box(6, "empty")
-               Box(7, "empty")
-               Box(8, "empty")
-               Box(9, "empty")
-               Box(10, "empty")
-               Box(11, "empty")
-               Box(12, "empty")
-               Box(13, "empty")
-               Box(14, "empty")
-               Box(15, "empty")
-               Box(16, "empty")
-               Box(17, "empty")
-               Box(18, "empty")
-               Box(19, "empty")
-               Box(20, "empty")
-               Box(21, "empty")
-               Box(22, "empty")
-               Box(23, "empty")
-               Box(24, "empty")
-               grid_refresh()
-            time.sleep(1)
-         else:
-            print("Number already taken!")
+      print("""
+                     PHASE 1
+
+By taking turns, each player places a man on the board.
+Upon getting a mill (3 in a row, horisontally or vertically),
+the player can take off a man of other player 
+Phase 1 ends when both players have placed 9 men.
+         """)
+      counter = 18
+      for _ in range(counter):
+         while True:
+            if len(player_1) <= len(player_2):
+               picking_variable = str(input("Player 1 pick a box: "))
+               if picking_variable in allocatable_numbers:
+                  if picking_variable == "1":
+                     Box(1, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "2":
+                     Box(2, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "3":
+                     Box(3, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "4":
+                     Box(4, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "5":
+                     Box(5, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "6":
+                     Box(6, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "7":
+                     Box(7, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "8":
+                     Box(8, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "9":
+                     Box(9, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "10":
+                     Box(10, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "11":
+                     Box(11, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "12":
+                     Box(12, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "13":
+                     Box(13, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "14":
+                     Box(14, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "15":
+                     Box(15, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "16":
+                     Box(16, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "17":
+                     Box(17, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "18":
+                     Box(18, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "19":
+                     Box(19, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "20":
+                     Box(20, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "21":
+                     Box(21, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "22":
+                     Box(22, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "23":
+                     Box(23, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "24":
+                     Box(24, "1")
+                     player_1.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+               else:
+                  print("Number already taken!")
+                  counter += 1
+                  time.sleep(1)
+                  grid_refresh()
+            elif len(player_1) > len(player_2):
+               picking_variable = str(input("Player 2 pick a box: "))
+               if picking_variable in allocatable_numbers:
+                  if picking_variable == "1":
+                     Box(1, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "2":
+                     Box(2, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "3":
+                     Box(3, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "4":
+                     Box(4, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "5":
+                     Box(5, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "6":
+                     Box(6, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "7":
+                     Box(7, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "8":
+                     Box(8, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "9":
+                     Box(9, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "10":
+                     Box(10, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "11":
+                     Box(11, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "12":
+                     Box(12, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "13":
+                     Box(13, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "14":
+                     Box(14, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "15":
+                     Box(15, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "16":
+                     Box(16, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "17":
+                     Box(17, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "18":
+                     Box(18, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "19":
+                     Box(19, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "20":
+                     Box(20, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "21":
+                     Box(21, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "22":
+                     Box(22, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "23":
+                     Box(23, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+                  elif picking_variable == "24":
+                     Box(24, "2")
+                     player_2.append(picking_variable)
+                     allocatable_numbers.remove(picking_variable)
+                     grid_refresh()
+                     break
+               else:
+                  print("Number already taken!")
+                  counter += 1
+                  time.sleep(1)
+                  grid_refresh()
+      while len(player_1) > 2 and len(player_2) > 2:
+         print("Phase 2")
+         time.sleep(5)
    # Option 2 - Player vs Bot - In To-Do list
    elif game_mode == "2":
       os.system("cls")
